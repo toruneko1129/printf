@@ -1,0 +1,15 @@
+#flags
+
+#minimum field length
+
+if mfl >= INT_MAX:
+	res = -1
+
+#precision
+
+if dot == INT_MAX:
+	res = -1
+else
+	res = ft_atoi(dot);
+
+#type

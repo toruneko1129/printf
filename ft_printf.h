@@ -6,6 +6,13 @@
 
 typedef struct s_fmt
 {
+	int		hash;
+	int		zero;
+	int		minus;
+	int		space;
+	int		plus;
+	int		mfl;
+	int		dot;
 	char	type;
 }	t_fmt;
 
