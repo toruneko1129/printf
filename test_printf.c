@@ -6,7 +6,7 @@ int	main(void)
 
 	//res = printf("%2s", "hoge");
 	//printf("\n%d\n", res);
-	res = printf("%.4294967299s", "hoge");
+	res = printf("%.*s", 3, "hoge");
 	printf("\n%d\n", res);
 	return (0);
 }

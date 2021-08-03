@@ -5,6 +5,8 @@
 if mfl >= INT_MAX:
 	res = -1
 
+*: get value from ...
+
 #precision
 
 point %= UINT_MAX
