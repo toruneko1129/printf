@@ -2,5 +2,7 @@
 
 int	ft_printf(const char *str, ...)
 {
+	if (str)
+		;
 	return (0);
 }

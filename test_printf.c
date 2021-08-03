@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ft_printf.h"
+#include "./includes/ft_printf.h"
 
 void	check_fmt_content(t_fmt fmt)
 {
@@ -10,7 +10,10 @@ void	check_fmt_content(t_fmt fmt)
 	printf("plus:%d\n", fmt.plus);
 	printf("mfw:%d\n", fmt.mfw);
 	printf("point:%d\n", fmt.point);
-	printf("type:%d\n", fmt.type);
+	if (ft_isprint(fmt.type))
+		printf("type:%c\n", fmt.type);
+	else
+		printf("type:%d\n", fmt.type);
 }
 
 int	main(void)

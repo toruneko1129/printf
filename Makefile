@@ -3,7 +3,7 @@ SRCDIR	=	./srcs
 SRCLIST	=	ft_printf.c \
 			ft_format_utils.c
 SRCS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
-OBJS	=	$(SRCLIST:.c=.o)
+OBJS	=	$(SRCS:.c=.o)
 INCLUDE	=	-I ./includes
 LIBDIR	=	./libft
 LIBFT	=	$(LIBDIR)/libft.a
