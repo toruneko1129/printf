@@ -2,7 +2,11 @@
 
 int	ft_printf(const char *str, ...)
 {
-	if (str)
-		;
-	return (0);
+	int		res;
+	va_list	ap;
+
+	res = 0;
+	va_start(ap, str);
+	va_end(ap);
+	return (res);
 }
