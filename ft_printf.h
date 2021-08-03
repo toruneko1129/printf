@@ -12,7 +12,7 @@ typedef struct s_fmt
 	int		space;
 	int		plus;
 	int		mfl;
-	int		dot;
+	int		point;
 	char	type;
 }	t_fmt;
 

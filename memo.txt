@@ -7,9 +7,11 @@ if mfl >= INT_MAX:
 
 #precision
 
-if dot == INT_MAX:
+point %= UINT_MAX
+
+if point == INT_MAX:
 	res = -1
-else
-	res = ft_atoi(dot);
+else if point > INT_MAX:
+	res = 0
 
 #type

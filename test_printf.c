@@ -4,9 +4,9 @@ int	main(void)
 {
 	int		res;
 
-	//res = printf("%4294967297s", "a");
+	//res = printf("%2s", "hoge");
 	//printf("\n%d\n", res);
-	res = printf("%.0d", 1);
+	res = printf("%.4294967299s", "hoge");
 	printf("\n%d\n", res);
 	return (0);
 }
