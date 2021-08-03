@@ -24,7 +24,9 @@ clean:
 	make clean -C $(LIBDIR)
 	rm -f $(OBJS)
 
-fclean: clean
+fclean:
+	make fclean -C $(LIBDIR)
+	rm -f $(OBJS)
 	rm -f $(NAME)
 
 re: fclean $(NAME)
