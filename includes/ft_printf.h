@@ -2,7 +2,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_fmt
 {
@@ -11,11 +11,12 @@ typedef struct s_fmt
 	int		minus;
 	int		space;
 	int		plus;
-	int		mfl;
+	int		mfw;
 	int		point;
 	char	type;
 }	t_fmt;
 
 int		ft_printf(const char *str, ...);
+t_fmt	ft_fmtnew(void);
 
 #endif

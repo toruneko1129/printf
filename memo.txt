@@ -1,6 +1,6 @@
 #flags
 
-#minimum field length
+#minimum field width
 
 if mfl >= INT_MAX:
 	res = -1
