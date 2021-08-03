@@ -14,15 +14,37 @@ void	check_fmt_content(t_fmt fmt)
 		printf("type:%c\n", fmt.type);
 	else
 		printf("type:%d\n", fmt.type);
+	printf("\n");
+}
+
+void	check_fmt_point(void)
+{
+	t_fmt	fmt;
+
+	fmt = ft_fmtnew();
+	fmt.type = 's';
+	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
+	fmt.type = 'd';
+	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
+	fmt.type = 'i';
+	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
+	fmt.type = 'u';
+	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
+	fmt.type = 'x';
+	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
 }
 
 int	main(void)
 {
-	//int res = printf("%2s", "hoge");
+	//int res = printf("%d%2147483647s", 1, "hoge");
 	//printf("\n%d\n", res);
-	//res = printf("%.*s", 3, "hoge");
+	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
-	t_fmt fmt = ft_fmtnew();
-	check_fmt_content(fmt);
+	check_fmt_point();
 	return (0);
 }

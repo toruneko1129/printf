@@ -14,3 +14,11 @@ t_fmt	ft_fmtnew(void)
 	new.type = '\0';
 	return (new);
 }
+
+void	ft_noprecision(t_fmt *fmt)
+{
+	if (fmt->type == 's')
+		fmt->point = INT_MAX;
+	else if (ft_strchr("diux", fmt->type) != NULL)
+		fmt->point = 1;
+}
