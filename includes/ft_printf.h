@@ -20,6 +20,7 @@ typedef struct s_fmt
 
 int		ft_printf(const char *str, ...);
 t_fmt	ft_fmtnew(void);
+void	ft_fmtfree(t_fmt *fmt);
 void	ft_noprecision(t_fmt *fmt);
 
 #endif

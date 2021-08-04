@@ -17,6 +17,14 @@ t_fmt	ft_fmtnew(void)
 	return (new);
 }
 
+void	ft_fmtfree(t_fmt *fmt)
+{
+	free(fmt->buf1);
+	fmt->buf1 = NULL;
+	free(fmt->buf2);
+	fmt->buf2 = NULL;
+}
+
 void	ft_noprecision(t_fmt *fmt)
 {
 	if (fmt->type == 's')

@@ -27,17 +27,41 @@ void	check_fmt_point(void)
 	fmt.type = 's';
 	ft_noprecision(&fmt);
 	check_fmt_content(fmt);
+	fmt = ft_fmtnew();
 	fmt.type = 'd';
 	ft_noprecision(&fmt);
 	check_fmt_content(fmt);
+	fmt = ft_fmtnew();
 	fmt.type = 'i';
 	ft_noprecision(&fmt);
 	check_fmt_content(fmt);
+	fmt = ft_fmtnew();
 	fmt.type = 'u';
 	ft_noprecision(&fmt);
 	check_fmt_content(fmt);
+	fmt = ft_fmtnew();
 	fmt.type = 'x';
 	ft_noprecision(&fmt);
+	check_fmt_content(fmt);
+}
+
+void	check_fmt_free(void)
+{
+	t_fmt	fmt;
+
+	fmt = ft_fmtnew();
+	fmt.buf1 = ft_strdup("hoge");
+	check_fmt_content(fmt);
+	ft_fmtfree(&fmt);
+	fmt = ft_fmtnew();
+	fmt.buf2 = ft_strdup("fuga");
+	check_fmt_content(fmt);
+	ft_fmtfree(&fmt);
+	fmt = ft_fmtnew();
+	fmt.buf1 = ft_strdup("hoge");
+	fmt.buf2 = ft_strdup("fuga");
+	check_fmt_content(fmt);
+	ft_fmtfree(&fmt);
 	check_fmt_content(fmt);
 }
 
@@ -47,7 +71,7 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
-	check_fmt_point();
-	//ft_printf("hogehoge", 1, 2, 3, 4);
+	//check_fmt_point();
+	//check_fmt_free();
 	return (0);
 }

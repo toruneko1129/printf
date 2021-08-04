@@ -11,6 +11,7 @@ int	ft_printf(const char *str, ...)
 	while (0)
 	{
 		fmt = ft_fmtnew();
+		ft_fmtfree(&fmt);
 	}
 	va_end(ap);
 	return (res);
