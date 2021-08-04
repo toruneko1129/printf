@@ -4,6 +4,7 @@ t_fmt	ft_fmtnew(void)
 {
 	t_fmt	new;
 
+	new.buf1 = NULL;
 	new.hash = 0;
 	new.zero = 0;
 	new.minus = 0;
@@ -12,6 +13,7 @@ t_fmt	ft_fmtnew(void)
 	new.mfw = 0;
 	new.point = -1;
 	new.type = '\0';
+	new.buf2 = NULL;
 	return (new);
 }
 

@@ -3,6 +3,7 @@
 
 void	check_fmt_content(t_fmt fmt)
 {
+	printf("buf1:%s\n", fmt.buf1);
 	printf("hash:%d\n", fmt.hash);
 	printf("zero:%d\n", fmt.zero);
 	printf("minus:%d\n", fmt.minus);
@@ -14,6 +15,7 @@ void	check_fmt_content(t_fmt fmt)
 		printf("type:%c\n", fmt.type);
 	else
 		printf("type:%d\n", fmt.type);
+	printf("buf2:%s\n", fmt.buf2);
 	printf("\n");
 }
 
@@ -45,7 +47,7 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
-	//check_fmt_point();
-	ft_printf("hogehoge", 1, 2, 3, 4);
+	check_fmt_point();
+	//ft_printf("hogehoge", 1, 2, 3, 4);
 	return (0);
 }

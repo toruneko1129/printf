@@ -6,6 +6,7 @@
 
 typedef struct s_fmt
 {
+	char	*buf1;
 	int		hash;
 	int		zero;
 	int		minus;
@@ -14,6 +15,7 @@ typedef struct s_fmt
 	int		mfw;
 	int		point;
 	char	type;
+	char	*buf2;
 }	t_fmt;
 
 int		ft_printf(const char *str, ...);
