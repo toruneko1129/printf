@@ -1,7 +1,7 @@
 #include "../includes/ft_printf.h"
 #include "../test_printf.h"
 
-static int	ft_read_upto_percent(const char **str, t_fmt *fmt)
+static int	ft_load_upto_percent(const char **str, t_fmt *fmt)
 {
 	char	*end;
 	size_t	len;
@@ -19,6 +19,29 @@ static int	ft_read_upto_percent(const char **str, t_fmt *fmt)
 	return ((int)len);
 }
 
+static void	ft_load_flags(const char **str, t_fmt *fmt)
+{
+	if (**str != '%')
+		return ;
+	while (ft_strchr("#0- +", *(++(*str))) != NULL)
+	{
+		if (**str == '#')
+			fmt->hash = 1;
+		else if (**str == '0')
+			fmt->zero = 1;
+		else if (**str == '-')
+			fmt->minus = 1;
+		else if (**str == ' ')
+			fmt->space = 1;
+		else if (**str == '+')
+			fmt->plus = 1;
+	}
+	if (fmt->minus)
+		fmt->zero = 0;
+	if (fmt->plus)
+		fmt->space = 0;
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		res;
@@ -28,13 +51,16 @@ int	ft_printf(const char *str, ...)
 	res = 0;
 	va_start(ap, str);
 	//while (*str)
+	char	*str2 = ft_strdup(str);
 	for (int i = 0;i < 1; ++i)
 	{
 		fmt = ft_fmtnew();
-		ft_read_upto_percent(&str, &fmt);
-		check_fmt_buf1(str, res, fmt);
+		ft_load_upto_percent(&str, &fmt);
+		ft_load_flags(&str, &fmt);
+		check_fmt_flags(str2, fmt);
 		ft_fmtfree(&fmt);
 	}
+	free(str2);
 	va_end(ap);
 	return (res);
 }

@@ -67,7 +67,7 @@ void	check_fmt_free(void)
 
 void	check_fmt_buf1(const char *str, int res, t_fmt fmt)
 {
-	//need to call ft_read_upto_percent in ft_printf
+	//need to call in ft_printf
 	printf("%c\n", *str);
 	printf("res:%d\n", res);
 	check_fmt_content(fmt);
@@ -80,6 +80,29 @@ void	test_fmt_buf1(void)
 	ft_printf("test case 3  %failed%");
 }
 
+void	check_fmt_flags(const char *str, t_fmt fmt)
+{
+	//need to call in ft_printf
+	printf("str:%s\n", str);
+	check_fmt_content(fmt);
+}
+
+void	test_fmt_flags(void)
+{
+	ft_printf("test case 1");
+	ft_printf("test case 2%d");
+	ft_printf("hoge%#x");
+	ft_printf("fuga %0d");
+	ft_printf("%-d");
+	ft_printf("hoge % d");
+	ft_printf("%+d");
+	ft_printf("%###d");
+	ft_printf("%+#0d");
+	ft_printf("%---   ##d");
+	ft_printf("#0- +%#0x");
+	ft_printf("%-0d");
+	ft_printf("%+ d");
+}
 
 int	main(void)
 {
@@ -89,6 +112,7 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//check_fmt_point();
 	//check_fmt_free();
-	test_fmt_buf1();
+	//test_fmt_buf1();
+	test_fmt_flags();
 	return (0);
 }
