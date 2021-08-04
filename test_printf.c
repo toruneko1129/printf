@@ -65,6 +65,22 @@ void	check_fmt_free(void)
 	check_fmt_content(fmt);
 }
 
+void	check_fmt_buf1(const char *str, int res, t_fmt fmt)
+{
+	//need to call ft_read_upto_percent in ft_printf
+	printf("%c\n", *str);
+	printf("res:%d\n", res);
+	check_fmt_content(fmt);
+}
+
+void	test_fmt_buf1(void)
+{
+	ft_printf("test case 1");
+	ft_printf("test case 2%failed");
+	ft_printf("test case 3  %failed%");
+}
+
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -73,5 +89,6 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//check_fmt_point();
 	//check_fmt_free();
+	test_fmt_buf1();
 	return (0);
 }
