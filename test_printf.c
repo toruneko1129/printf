@@ -3,6 +3,7 @@
 
 void	check_fmt_content(t_fmt fmt)
 {
+	printf("len:%d\n", fmt.len);
 	printf("buf1:%s\n", fmt.buf1);
 	printf("hash:%d\n", fmt.hash);
 	printf("zero:%d\n", fmt.zero);
@@ -110,9 +111,10 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
+	//check_fmt_content(ft_fmtnew());
 	//check_fmt_point();
 	//check_fmt_free();
 	//test_fmt_buf1();
-	test_fmt_flags();
+	//test_fmt_flags();
 	return (0);
 }

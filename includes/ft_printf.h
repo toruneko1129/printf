@@ -6,6 +6,7 @@
 
 typedef struct s_fmt
 {
+	int		len;
 	char	*buf1;
 	int		hash;
 	int		zero;

@@ -21,7 +21,7 @@ static int	ft_load_upto_percent(const char **str, t_fmt *fmt)
 
 static void	ft_load_flags(const char **str, t_fmt *fmt)
 {
-	if (**str != '%')
+	if (fmt->len == -1 || **str != '%')
 		return ;
 	while (ft_strchr("#0- +", *(++(*str))) != NULL)
 	{
@@ -55,9 +55,8 @@ int	ft_printf(const char *str, ...)
 	for (int i = 0;i < 1; ++i)
 	{
 		fmt = ft_fmtnew();
-		ft_load_upto_percent(&str, &fmt);
+		fmt.len = ft_load_upto_percent(&str, &fmt);
 		ft_load_flags(&str, &fmt);
-		check_fmt_flags(str2, fmt);
 		ft_fmtfree(&fmt);
 	}
 	free(str2);

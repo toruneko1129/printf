@@ -4,6 +4,7 @@ t_fmt	ft_fmtnew(void)
 {
 	t_fmt	new;
 
+	new.len = 0;
 	new.buf1 = NULL;
 	new.hash = 0;
 	new.zero = 0;
