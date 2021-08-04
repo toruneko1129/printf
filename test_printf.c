@@ -45,6 +45,7 @@ int	main(void)
 	//printf("\n%d\n", res);
 	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
-	check_fmt_point();
+	//check_fmt_point();
+	ft_printf("hogehoge", 1, 2, 3, 4);
 	return (0);
 }
