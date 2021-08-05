@@ -10,8 +10,8 @@ void	check_fmt_content(t_fmt fmt)
 	printf("minus:%d\n", fmt.minus);
 	printf("space:%d\n", fmt.space);
 	printf("plus:%d\n", fmt.plus);
-	printf("mfw:%d\n", fmt.mfw);
-	printf("point:%d\n", fmt.point);
+	printf("mfw:%lu\n", fmt.mfw);
+	printf("point:%lu\n", fmt.point);
 	if (ft_isprint(fmt.type))
 		printf("type:%c\n", fmt.type);
 	else
@@ -105,6 +105,33 @@ void	test_fmt_flags(void)
 	ft_printf("%+ d");
 }
 
+void	check_fmt_mfw(const char *str, t_fmt fmt)
+{
+	//need to call in ft_printf
+	printf("str:%s\n", str);
+	check_fmt_content(fmt);
+}
+
+void	test_fmt_mfw(void)
+{
+	ft_printf("test case 1");
+	ft_printf("test case 2%d");
+	ft_printf("hoge%#42x");
+	ft_printf("fuga %053d");
+	ft_printf("%-46236d");
+	ft_printf("hoge % 242135d");
+	ft_printf("%+7696907d");
+	ft_printf("%###2147483647d");
+	ft_printf("%+#02147483648d");
+	ft_printf("%---   ##2147483898d");
+	ft_printf("#0- +%#09223372036854775807x");
+	ft_printf("%-09223372036854775808d");
+	ft_printf("%+ 9223372036854776058d");
+	ft_printf("%18446744073709551615d");
+	ft_printf("%18446744073709551616d");
+	ft_printf("%18446744073709551658d");
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -116,5 +143,6 @@ int	main(void)
 	//check_fmt_free();
 	//test_fmt_buf1();
 	//test_fmt_flags();
+	test_fmt_mfw();
 	return (0);
 }

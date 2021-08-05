@@ -6,22 +6,23 @@
 
 typedef struct s_fmt
 {
-	int		len;
-	char	*buf1;
-	int		hash;
-	int		zero;
-	int		minus;
-	int		space;
-	int		plus;
-	int		mfw;
-	int		point;
-	char	type;
-	char	*buf2;
+	int				len;
+	char			*buf1;
+	int				hash;
+	int				zero;
+	int				minus;
+	int				space;
+	int				plus;
+	unsigned long	mfw;
+	unsigned long	point;
+	char			type;
+	char			*buf2;
 }	t_fmt;
 
-int		ft_printf(const char *str, ...);
-t_fmt	ft_fmtnew(void);
-void	ft_fmtfree(t_fmt *fmt);
-void	ft_noprecision(t_fmt *fmt);
+int				ft_printf(const char *str, ...);
+t_fmt			ft_fmtnew(void);
+void			ft_fmtfree(t_fmt *fmt);
+void			ft_noprecision(t_fmt *fmt);
+unsigned long	ft_atoul(const char **str);
 
 #endif

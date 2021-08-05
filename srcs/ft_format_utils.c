@@ -11,8 +11,8 @@ t_fmt	ft_fmtnew(void)
 	new.minus = 0;
 	new.space = 0;
 	new.plus = 0;
-	new.mfw = 0;
-	new.point = -1;
+	new.mfw = (unsigned long)0;
+	new.point = (unsigned long)0;
 	new.type = '\0';
 	new.buf2 = NULL;
 	return (new);
@@ -24,6 +24,19 @@ void	ft_fmtfree(t_fmt *fmt)
 	fmt->buf1 = NULL;
 	free(fmt->buf2);
 	fmt->buf2 = NULL;
+}
+
+unsigned long	ft_atoul(const char **str)
+{
+	unsigned long	res;
+
+	res = 0;
+	while (ft_isdigit(**str))
+	{
+		res = res * 10 + **str - '0';
+		++(*str);
+	}
+	return (res);
 }
 
 void	ft_noprecision(t_fmt *fmt)

@@ -42,6 +42,13 @@ static void	ft_load_flags(const char **str, t_fmt *fmt)
 		fmt->space = 0;
 }
 
+static void	ft_load_mfw(const char **str, t_fmt *fmt)
+{
+	if (fmt->len == -1)
+		return ;
+	fmt->mfw = ft_atoul(str);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		res;
@@ -57,6 +64,8 @@ int	ft_printf(const char *str, ...)
 		fmt = ft_fmtnew();
 		fmt.len = ft_load_upto_percent(&str, &fmt);
 		ft_load_flags(&str, &fmt);
+		ft_load_mfw(&str, &fmt);
+		check_fmt_mfw(str2, fmt);
 		ft_fmtfree(&fmt);
 	}
 	free(str2);
