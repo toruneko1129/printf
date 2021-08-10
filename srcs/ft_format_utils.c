@@ -11,8 +11,8 @@ t_fmt	ft_fmtnew(void)
 	new.minus = 0;
 	new.space = 0;
 	new.plus = 0;
-	new.mfw = (unsigned long)0;
-	new.point = (unsigned long)0;
+	new.mfw = 0;
+	new.point = 0;
 	new.type = '\0';
 	new.buf2 = NULL;
 	return (new);
@@ -26,17 +26,20 @@ void	ft_fmtfree(t_fmt *fmt)
 	fmt->buf2 = NULL;
 }
 
-unsigned long	ft_atoul(const char **str)
+int		ft_isoverflow(const char *str)
 {
-	unsigned long	res;
+	int		off;
+	int		lim;
+	int		res;
 
+	off = INT_MAX / 10;
+	lim = INT_MAX % 10;
 	res = 0;
-	while (ft_isdigit(**str))
+	while (ft_isdigit(*str) && (res < off || (res == off && *str - '0' <= lim)))
 	{
-		res = res * 10 + **str - '0';
-		++(*str);
+		res = res * 10 + *(str++) - '0';
 	}
-	return (res);
+	return (ft_isdigit(*str));
 }
 
 void	ft_noprecision(t_fmt *fmt)

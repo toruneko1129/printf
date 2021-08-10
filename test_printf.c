@@ -10,8 +10,8 @@ void	check_fmt_content(t_fmt fmt)
 	printf("minus:%d\n", fmt.minus);
 	printf("space:%d\n", fmt.space);
 	printf("plus:%d\n", fmt.plus);
-	printf("mfw:%lu\n", fmt.mfw);
-	printf("point:%lu\n", fmt.point);
+	printf("mfw:%d\n", fmt.mfw);
+	printf("point:%d\n", fmt.point);
 	if (ft_isprint(fmt.type))
 		printf("type:%c\n", fmt.type);
 	else
@@ -116,11 +116,13 @@ void	test_fmt_mfw(void)
 {
 	ft_printf("test case 1");
 	ft_printf("test case 2%d");
+	ft_printf("24235");
 	ft_printf("hoge%#42x");
 	ft_printf("fuga %053d");
 	ft_printf("%-46236d");
 	ft_printf("hoge % 242135d");
 	ft_printf("%+7696907d");
+	ft_printf("%2147483646d");
 	ft_printf("%###2147483647d");
 	ft_printf("%+#02147483648d");
 	ft_printf("%---   ##2147483898d");

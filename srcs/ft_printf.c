@@ -46,7 +46,12 @@ static void	ft_load_mfw(const char **str, t_fmt *fmt)
 {
 	if (fmt->len == -1)
 		return ;
-	fmt->mfw = ft_atoul(str);
+	if (ft_isoverflow(*str))
+		fmt->mfw = -1;
+	else
+		fmt->mfw = ft_atoi(*str);
+	while (ft_isdigit(**str))
+		++(*str);
 }
 
 int	ft_printf(const char *str, ...)
