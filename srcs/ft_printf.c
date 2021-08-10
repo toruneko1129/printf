@@ -44,7 +44,7 @@ static void	ft_load_flags(const char **str, t_fmt *fmt)
 
 static void	ft_load_mfw(const char **str, t_fmt *fmt)
 {
-	if (fmt->len == -1)
+	if (fmt->len == -1 || !**str)
 		return ;
 	fmt->mfw = ft_getwidth(str);
 }
@@ -65,19 +65,18 @@ int	ft_printf(const char *str, ...)
 
 	res = 0;
 	va_start(ap, str);
-	//while (*str)
-	char	*str2 = ft_strdup(str);
-	for (int i = 0;i < 1; ++i)
+	while (*str)
 	{
+		printf("%zu\n", ft_strlen(str));
 		fmt = ft_fmtnew();
 		fmt.len = ft_load_upto_percent(&str, &fmt);
 		ft_load_flags(&str, &fmt);
 		ft_load_mfw(&str, &fmt);
 		ft_load_precision(&str, &fmt);
-		check_fmt_point(str2, fmt);
+		ft_load_type(&str, &fmt);
+		check_fmt_content(fmt);
 		ft_fmtfree(&fmt);
 	}
-	free(str2);
 	va_end(ap);
 	return (res);
 }

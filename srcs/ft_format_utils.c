@@ -46,9 +46,9 @@ int	ft_getwidth(const char **str)
 {
 	int		res;
 
-	if (ft_isoverflow(*str))
-		return (INT_MAX);
 	res = ft_atoi(*str);
+	if (ft_isoverflow(*str))
+		res = INT_MAX;
 	while (ft_isdigit(**str))
 		++(*str);
 	return (res);

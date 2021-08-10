@@ -132,6 +132,59 @@ void	test_fmt_point(void)
 	ft_printf("#0- +%#.000024608675x");
 }
 
+void	check_fmt_type(const char *str, t_fmt fmt)
+{
+	//need to call in ft_printf
+	printf("str:%s\n", str);
+	check_fmt_content(fmt);
+}
+
+void	test_fmt_type(void)
+{
+	ft_printf("test case 1");
+	ft_printf("test case 2%d");
+	ft_printf("24235");
+	ft_printf("hoge%#42c");
+	ft_printf("fuga %053.42s");
+	ft_printf("%-46236.d");
+	ft_printf("hoge % 242135.2147483646i");
+	ft_printf("%+7696907.2147483647u");
+	ft_printf("%2147483646.2147483648x");
+	ft_printf("%###2147483647.0024p");
+	ft_printf("%+#02147483648.52d");
+	ft_printf("%---   ##.00000000000000000037d");
+	ft_printf("#0- +%#.000024608675p");
+}
+
+void	check_fmt_all(const char *str)
+{
+	printf("str:%s\n", str);
+	ft_printf(str);
+	for (int i = 0; i < 25; ++i)
+		printf("-");
+	printf("\n");
+}
+
+void	test_fmt_all(void)
+{
+	check_fmt_all("test case 1");
+	check_fmt_all("test case 2%d");
+	check_fmt_all("24235");
+	check_fmt_all("hoge%#42c");
+	check_fmt_all("fuga %053.42s");
+	check_fmt_all("%-46236.d");
+	check_fmt_all("hoge % 242135.2147483646i");
+	check_fmt_all("%+7696907.2147483647u");
+	check_fmt_all("%2147483646.2147483648x");
+	check_fmt_all("%###2147483647.0024p");
+	check_fmt_all("%+#02147483648.52d");
+	check_fmt_all("%---   ##.00000000000000000037d");
+	check_fmt_all("#0- +%#.000024608675p");
+	check_fmt_all("hoge%dfuga%s");
+	check_fmt_all("fuga %053.42s%-46236.d");
+	check_fmt_all("hoge%dfuga%shoga");
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -143,6 +196,8 @@ int	main(void)
 	//test_fmt_buf1();
 	//test_fmt_flags();
 	//test_fmt_mfw();
-	test_fmt_point();
+	//test_fmt_point();
+	//test_fmt_type();
+	test_fmt_all();
 	return (0);
 }

@@ -24,5 +24,6 @@ t_fmt	ft_fmtnew(void);
 void	ft_fmtfree(t_fmt *fmt);
 int		ft_isoverflow(const char *str);
 int		ft_getwidth(const char **str);
+void	ft_load_type(const char **str, t_fmt *fmt);
 
 #endif
