@@ -1,7 +1,16 @@
 #include "../includes/ft_printf.h"
 #include "../test_printf.h"
 
-static int	ft_load_upto_percent(const char **str, t_fmt *fmt)
+static void	ft_load_fmt(const char **str, t_fmt *fmt)
+{
+	fmt->len = ft_load_upto_percent(str, fmt);
+	ft_load_flags(str, fmt);
+	ft_load_mfw(str, fmt);
+	ft_load_precision(str, fmt);
+	ft_load_type(str, fmt);
+}
+
+int	ft_load_upto_percent(const char **str, t_fmt *fmt)
 {
 	char	*end;
 	size_t	len;
@@ -19,7 +28,7 @@ static int	ft_load_upto_percent(const char **str, t_fmt *fmt)
 	return ((int)len);
 }
 
-static void	ft_load_flags(const char **str, t_fmt *fmt)
+void	ft_load_flags(const char **str, t_fmt *fmt)
 {
 	if (fmt->len == -1 || **str != '%')
 		return ;
@@ -42,19 +51,11 @@ static void	ft_load_flags(const char **str, t_fmt *fmt)
 		fmt->space = 0;
 }
 
-static void	ft_load_mfw(const char **str, t_fmt *fmt)
+void	ft_load_mfw(const char **str, t_fmt *fmt)
 {
 	if (fmt->len == -1 || !**str)
 		return ;
 	fmt->mfw = ft_getwidth(str);
-}
-
-static void	ft_load_precision(const char **str, t_fmt *fmt)
-{
-	if (fmt->len == -1 || fmt->mfw == INT_MAX ||  **str != '.')
-		return ;
-	++(*str);
-	fmt->point = ft_getwidth(str);
 }
 
 int	ft_printf(const char *str, ...)
@@ -67,13 +68,8 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	while (*str)
 	{
-		printf("%zu\n", ft_strlen(str));
 		fmt = ft_fmtnew();
-		fmt.len = ft_load_upto_percent(&str, &fmt);
-		ft_load_flags(&str, &fmt);
-		ft_load_mfw(&str, &fmt);
-		ft_load_precision(&str, &fmt);
-		ft_load_type(&str, &fmt);
+		ft_load_fmt(&str, &fmt);
 		check_fmt_content(fmt);
 		ft_fmtfree(&fmt);
 	}
