@@ -20,32 +20,6 @@ void	check_fmt_content(t_fmt fmt)
 	printf("\n");
 }
 
-void	check_fmt_point(void)
-{
-	t_fmt	fmt;
-
-	fmt = ft_fmtnew();
-	fmt.type = 's';
-	ft_noprecision(&fmt);
-	check_fmt_content(fmt);
-	fmt = ft_fmtnew();
-	fmt.type = 'd';
-	ft_noprecision(&fmt);
-	check_fmt_content(fmt);
-	fmt = ft_fmtnew();
-	fmt.type = 'i';
-	ft_noprecision(&fmt);
-	check_fmt_content(fmt);
-	fmt = ft_fmtnew();
-	fmt.type = 'u';
-	ft_noprecision(&fmt);
-	check_fmt_content(fmt);
-	fmt = ft_fmtnew();
-	fmt.type = 'x';
-	ft_noprecision(&fmt);
-	check_fmt_content(fmt);
-}
-
 void	check_fmt_free(void)
 {
 	t_fmt	fmt;
@@ -134,6 +108,30 @@ void	test_fmt_mfw(void)
 	ft_printf("%18446744073709551658d");
 }
 
+void	check_fmt_point(const char *str, t_fmt fmt)
+{
+	//need to call in ft_printf
+	printf("str:%s\n", str);
+	check_fmt_content(fmt);
+}
+
+void	test_fmt_point(void)
+{
+	ft_printf("test case 1");
+	ft_printf("test case 2%d");
+	ft_printf("24235");
+	ft_printf("hoge%#42x");
+	ft_printf("fuga %053.42d");
+	ft_printf("%-46236.d");
+	ft_printf("hoge % 242135.2147483646d");
+	ft_printf("%+7696907.2147483647d");
+	ft_printf("%2147483646.2147483648d");
+	ft_printf("%###2147483647.0024d");
+	ft_printf("%+#02147483648.52d");
+	ft_printf("%---   ##2147483898.00000000000000000037d");
+	ft_printf("#0- +%#09223372036854775807.2468675x");
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -141,10 +139,10 @@ int	main(void)
 	//int res = printf("%.0x%.0x", 0, 10);
 	//printf("\n%d\n", res);
 	//check_fmt_content(ft_fmtnew());
-	//check_fmt_point();
 	//check_fmt_free();
 	//test_fmt_buf1();
 	//test_fmt_flags();
-	test_fmt_mfw();
+	//test_fmt_mfw();
+	test_fmt_point();
 	return (0);
 }

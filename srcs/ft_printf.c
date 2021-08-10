@@ -46,12 +46,15 @@ static void	ft_load_mfw(const char **str, t_fmt *fmt)
 {
 	if (fmt->len == -1)
 		return ;
-	if (ft_isoverflow(*str))
-		fmt->mfw = -1;
-	else
-		fmt->mfw = ft_atoi(*str);
-	while (ft_isdigit(**str))
-		++(*str);
+	fmt->mfw = ft_getwidth(str);
+}
+
+static void	ft_load_precision(const char **str, t_fmt *fmt)
+{
+	if (fmt->len == -1 || fmt->mfw == INT_MAX ||  **str != '.')
+		return ;
+	++(*str);
+	fmt->point = ft_getwidth(str);
 }
 
 int	ft_printf(const char *str, ...)
@@ -70,7 +73,8 @@ int	ft_printf(const char *str, ...)
 		fmt.len = ft_load_upto_percent(&str, &fmt);
 		ft_load_flags(&str, &fmt);
 		ft_load_mfw(&str, &fmt);
-		check_fmt_mfw(str2, fmt);
+		ft_load_precision(&str, &fmt);
+		check_fmt_point(str2, fmt);
 		ft_fmtfree(&fmt);
 	}
 	free(str2);

@@ -12,7 +12,7 @@ t_fmt	ft_fmtnew(void)
 	new.space = 0;
 	new.plus = 0;
 	new.mfw = 0;
-	new.point = 0;
+	new.point = -1;
 	new.type = '\0';
 	new.buf2 = NULL;
 	return (new);
@@ -26,7 +26,7 @@ void	ft_fmtfree(t_fmt *fmt)
 	fmt->buf2 = NULL;
 }
 
-int		ft_isoverflow(const char *str)
+int	ft_isoverflow(const char *str)
 {
 	int		off;
 	int		lim;
@@ -42,10 +42,14 @@ int		ft_isoverflow(const char *str)
 	return (ft_isdigit(*str));
 }
 
-void	ft_noprecision(t_fmt *fmt)
+int	ft_getwidth(const char **str)
 {
-	if (fmt->type == 's')
-		fmt->point = INT_MAX;
-	else if (ft_strchr("diux", fmt->type) != NULL)
-		fmt->point = 1;
+	int		res;
+
+	if (ft_isoverflow(*str))
+		return (INT_MAX);
+	res = ft_atoi(*str);
+	while (ft_isdigit(**str))
+		++(*str);
+	return (res);
 }
