@@ -14,6 +14,7 @@ t_fmt	ft_fmtnew(void)
 	new.mfw = 0;
 	new.point = -1;
 	new.type = '\0';
+	new.len2 = 0;
 	new.buf2 = NULL;
 	return (new);
 }

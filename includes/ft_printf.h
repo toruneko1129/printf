@@ -18,6 +18,7 @@ typedef struct s_fmt
 	int		mfw;
 	int		point;
 	char	type;
+	int		len2;
 	char	*buf2;
 }	t_fmt;
 

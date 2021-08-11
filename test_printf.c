@@ -17,6 +17,7 @@ void	check_fmt_content(t_fmt fmt)
 		printf("type:%c\n", fmt.type);
 	else
 		printf("type:%d\n", fmt.type);
+	printf("len2:%d\n", fmt.len2);
 	printf("buf2:%s\n", fmt.buf2);
 	printf("\n");
 }
@@ -209,6 +210,12 @@ void	test_typec(void)
 	check_output(str, ft_printf(str, 'c', 'd'));
 	str = "non ascii:%cyay";
 	check_output(str, ft_printf(str, '\200'));
+	str = "multi flags:%-------4c";
+	check_output(str, ft_printf(str, '@'));
+	str = "invalid:%2147483640c";
+	check_output(str, ft_printf(str, 'g'));
+	str = "hoge:%cfuga:%2147483637c";
+	//check_output(str, ft_printf(str, 'x'));
 }
 
 int	main(void)
