@@ -12,14 +12,13 @@ static int	ft_typec_bufinit(t_fmt *fmt)
 
 int	ft_fmt_typec(int res, va_list *ap, t_fmt *fmt)
 {
-	int		c;
+	const int	c = va_arg(*ap, int);
 
 	fmt->len2 = fmt->mfw;
 	if (!fmt->len2)
 		fmt->len2 = 1;
 	if (fmt->len >= INT_MAX - res - fmt->len2 || ft_typec_bufinit(fmt))
 		return (FAILED);
-	c = va_arg(*ap, int);
 	if (fmt->minus)
 		*(fmt->buf2) = (unsigned char)c;
 	else
