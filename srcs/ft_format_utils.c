@@ -5,7 +5,7 @@ t_fmt	ft_fmtnew(void)
 	t_fmt	new;
 
 	new.len = 0;
-	new.buf1 = NULL;
+	new.buf = NULL;
 	new.hash = 0;
 	new.zero = 0;
 	new.minus = 0;
@@ -21,8 +21,8 @@ t_fmt	ft_fmtnew(void)
 
 void	ft_fmtfree(t_fmt *fmt)
 {
-	free(fmt->buf1);
-	fmt->buf1 = NULL;
+	free(fmt->buf);
+	fmt->buf = NULL;
 	free(fmt->buf2);
 	fmt->buf2 = NULL;
 }
