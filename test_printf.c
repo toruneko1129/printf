@@ -3,6 +3,7 @@
 
 void	check_fmt_content(t_fmt fmt)
 {
+	printf("<fmt>\n");
 	printf("len:%d\n", fmt.len);
 	printf("buf1:%s\n", fmt.buf1);
 	printf("hash:%d\n", fmt.hash);
@@ -158,8 +159,11 @@ void	test_fmt_type(void)
 
 void	check_fmt_all(const char *str)
 {
-	printf("str:%s\n", str);
-	ft_printf(str);
+	int		res;
+
+	printf("str:%s\n\n", str);
+	res = ft_printf(str);
+	printf("res:%d\n", res);
 	for (int i = 0; i < 25; ++i)
 		printf("-");
 	printf("\n");
@@ -183,6 +187,7 @@ void	test_fmt_all(void)
 	check_fmt_all("hoge%dfuga%s");
 	check_fmt_all("fuga %053.42s%-46236.d");
 	check_fmt_all("hoge%dfuga%shoga");
+	check_fmt_all("hoge%pfuga%2147483647u");
 }
 
 int	main(void)

@@ -3,6 +3,8 @@
 
 # include <stdarg.h>
 # include "../libft/libft.h"
+# define SUCCESS 0
+# define FAILED 1
 
 typedef struct s_fmt
 {
@@ -29,5 +31,6 @@ t_fmt	ft_fmtnew(void);
 void	ft_fmtfree(t_fmt *fmt);
 int		ft_isoverflow(const char *str);
 int		ft_getwidth(const char **str);
+void	ft_printf_end(va_list *ap, t_fmt *fmt);
 
 #endif

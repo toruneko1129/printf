@@ -53,3 +53,9 @@ int	ft_getwidth(const char **str)
 		++(*str);
 	return (res);
 }
+
+void	ft_printf_end(va_list *ap, t_fmt *fmt)
+{
+	va_end(*ap);
+	ft_fmtfree(fmt);
+}
