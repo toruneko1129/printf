@@ -5,7 +5,7 @@ void	check_fmt_content(t_fmt fmt)
 {
 	printf("<fmt>\n");
 	printf("len:%d\n", fmt.len);
-	printf("buf1:%s\n", fmt.buf1);
+	printf("buf:%s\n", fmt.buf);
 	printf("hash:%d\n", fmt.hash);
 	printf("zero:%d\n", fmt.zero);
 	printf("minus:%d\n", fmt.minus);
@@ -27,7 +27,7 @@ void	check_fmt_free(void)
 	t_fmt	fmt;
 
 	fmt = ft_fmtnew();
-	fmt.buf1 = ft_strdup("hoge");
+	fmt.buf = ft_strdup("hoge");
 	check_fmt_content(fmt);
 	ft_fmtfree(&fmt);
 	fmt = ft_fmtnew();
@@ -35,7 +35,7 @@ void	check_fmt_free(void)
 	check_fmt_content(fmt);
 	ft_fmtfree(&fmt);
 	fmt = ft_fmtnew();
-	fmt.buf1 = ft_strdup("hoge");
+	fmt.buf = ft_strdup("hoge");
 	fmt.buf2 = ft_strdup("fuga");
 	check_fmt_content(fmt);
 	ft_fmtfree(&fmt);
@@ -193,7 +193,7 @@ void	test_fmt_all(void)
 
 void	check_output(const char *str, int res)
 {
-	printf("str:%s\n", str);
+	printf("\n\nstr:%s\n", str);
 	printf("res:%d\n", res);
 	for (int i = 0; i < 25; ++i)
 		printf("-");

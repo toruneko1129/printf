@@ -23,6 +23,16 @@ static int	ft_fmt_to_str(va_list *ap, t_fmt *fmt)
 	return (SUCCESS);
 }
 
+static int	ft_write_buf(int *res, t_fmt fmt)
+{
+	if (fmt.len && write(1, fmt.buf, fmt.len) == -1)
+		return (FAILED);
+	if (fmt.len2 && write(1, fmt.buf2, fmt.len2) == -1)
+		return (FAILED);
+	*res += fmt.len + fmt.len2;
+	return (SUCCESS);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		res;
@@ -35,12 +45,12 @@ int	ft_printf(const char *str, ...)
 	{
 		fmt = ft_fmtnew();
 		ft_load_fmt(&str, res, &fmt);
-		if (ft_fmt_to_str(&ap, &fmt))
+		if (ft_fmt_to_str(&ap, &fmt) || ft_write_buf(&res, fmt))
 		{
 			ft_printf_end(&ap, &fmt);
 			return (-1);
 		}
-		check_fmt_content(fmt);
+		//check_fmt_content(fmt);
 		ft_fmtfree(&fmt);
 	}
 	va_end(ap);

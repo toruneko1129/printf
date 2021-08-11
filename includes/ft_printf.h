@@ -9,7 +9,7 @@
 typedef struct s_fmt
 {
 	int		len;
-	char	*buf1;
+	char	*buf;
 	int		hash;
 	int		zero;
 	int		minus;
