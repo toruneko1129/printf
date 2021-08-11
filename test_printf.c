@@ -203,19 +203,26 @@ void	check_output(const char *str, int res)
 void	test_typec(void)
 {
 	char	*str;
+	int		res;
 
 	str = "test:%c";
-	check_output(str, ft_printf(str, 'a'));
+	res = ft_printf(str, 'a');
+	check_output(str, res);
 	str = "c:%3c, d:%-5c";
-	check_output(str, ft_printf(str, 'c', 'd'));
+	res = ft_printf(str, 'c', 'd');
+	check_output(str, res);
 	str = "non ascii:%cyay";
-	check_output(str, ft_printf(str, '\200'));
+	res = ft_printf(str, '\200');
+	check_output(str, res);
 	str = "multi flags:%-------4c";
-	check_output(str, ft_printf(str, '@'));
+	res = ft_printf(str, '@');
+	check_output(str, res);
 	str = "invalid:%2147483640c";
-	check_output(str, ft_printf(str, 'g'));
-	str = "hoge:%cfuga:%2147483637c";
-	//check_output(str, ft_printf(str, 'x'));
+	res = ft_printf(str, 'g');
+	check_output(str, res);
+	str = "hoge:%cfuga:%2147483640c";
+	res = ft_printf(str, 'x', 'y');
+	check_output(str, res);
 }
 
 int	main(void)

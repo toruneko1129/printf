@@ -1,13 +1,13 @@
 #include "../includes/ft_printf.h"
 
-int	ft_fmt_typec(va_list *ap, t_fmt *fmt)
+int	ft_fmt_typec(int res, va_list *ap, t_fmt *fmt)
 {
 	int		c;
 
 	fmt->len2 = fmt->mfw;
 	if (!fmt->len2)
 		fmt->len2 = 1;
-	if (fmt->len >= INT_MAX - fmt->len2)
+	if (fmt->len >= INT_MAX - res - fmt->len2)
 		return (FAILED);
 	fmt->buf2 = (char *)malloc((fmt->len2 + 1) * sizeof(char));
 	if (fmt->buf2 == NULL)

@@ -14,12 +14,12 @@ static void	ft_load_fmt(const char **str, int res, t_fmt *fmt)
 	ft_load_type(str, fmt);
 }
 
-static int	ft_fmt_to_str(va_list *ap, t_fmt *fmt)
+static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 {
 	if (fmt->len == -1 || fmt->mfw == INT_MAX)
 		return (FAILED);
 	if (fmt->type == 'c')
-		return (ft_fmt_typec(ap, fmt));
+		return (ft_fmt_typec(res, ap, fmt));
 	return (SUCCESS);
 }
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *str, ...)
 	{
 		fmt = ft_fmtnew();
 		ft_load_fmt(&str, res, &fmt);
-		if (ft_fmt_to_str(&ap, &fmt) || ft_write_buf(&res, fmt))
+		if (ft_fmt_to_str(res, &ap, &fmt) || ft_write_buf(&res, fmt))
 		{
 			ft_printf_end(&ap, &fmt);
 			return (-1);
