@@ -193,11 +193,14 @@ void	test_fmt_all(void)
 
 void	check_output(const char *str, int res)
 {
-	printf("\n\nstr:%s\n", str);
-	printf("res:%d\n", res);
+	ft_putstr_fd("\n\nstr:", 1);
+	ft_putstr_fd((char *)str, 1);
+	ft_putstr_fd("\nres:", 1);
+	ft_putnbr_fd(res, 1);
+	ft_putchar_fd('\n', 1);
 	for (int i = 0; i < 25; ++i)
-		printf("-");
-	printf("\n");
+		ft_putchar_fd('-', 1);
+	ft_putchar_fd('\n', 1);
 }
 
 void	test_typec(void)
