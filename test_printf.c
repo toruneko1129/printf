@@ -190,6 +190,27 @@ void	test_fmt_all(void)
 	check_fmt_all("hoge%pfuga%2147483647u");
 }
 
+void	check_output(const char *str, int res)
+{
+	printf("str:%s\n", str);
+	printf("res:%d\n", res);
+	for (int i = 0; i < 25; ++i)
+		printf("-");
+	printf("\n");
+}
+
+void	test_typec(void)
+{
+	char	*str;
+
+	str = "test:%c";
+	check_output(str, ft_printf(str, 'a'));
+	str = "c:%3c, d:%-5c";
+	check_output(str, ft_printf(str, 'c', 'd'));
+	str = "non ascii:%cyay";
+	check_output(str, ft_printf(str, '\200'));
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -203,6 +224,7 @@ int	main(void)
 	//test_fmt_mfw();
 	//test_fmt_point();
 	//test_fmt_type();
-	test_fmt_all();
+	//test_fmt_all();
+	test_typec();
 	return (0);
 }
