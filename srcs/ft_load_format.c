@@ -1,6 +1,6 @@
 #include "../includes/ft_printf.h"
 
-int	ft_load_upto_percent(const char **str, t_fmt *fmt)
+int	ft_load_upto_percent(const char **str, int res, t_fmt *fmt)
 {
 	char	*end;
 	size_t	len;
@@ -9,7 +9,7 @@ int	ft_load_upto_percent(const char **str, t_fmt *fmt)
 	if (end == NULL)
 		end = ft_strchr(*str, '\0');
 	len = end - *str;
-	if (len >= (size_t)INT_MAX)
+	if (len >= (size_t)INT_MAX - res)
 		return (-1);
 	fmt->buf1 = ft_substr(*str, 0, len);
 	if (fmt->buf1 == NULL)

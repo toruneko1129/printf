@@ -2,6 +2,7 @@ NAME	=	libftprintf.a
 SRCDIR	=	./srcs
 SRCLIST	=	ft_printf.c \
 			ft_load_format.c \
+			ft_format_typec.c \
 			ft_format_utils.c
 SRCS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 OBJS	=	$(SRCS:.c=.o)
