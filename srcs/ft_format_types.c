@@ -19,16 +19,6 @@ static int	ft_types_getlen2(int res, t_fmt *fmt, const char *s)
 	return (SUCCESS);
 }
 
-static int	ft_types_bufinit(t_fmt *fmt)
-{
-	fmt->buf2 = (char *)malloc((fmt->len2 + 1) * sizeof(char));
-	if (fmt->buf2 == NULL)
-		return (FAILED);
-	ft_memset(fmt->buf2, ' ', fmt->len2);
-	*(fmt->buf2 + fmt->len2) = '\0';
-	return (SUCCESS);
-}
-
 int	ft_fmt_types(int res, va_list *ap, t_fmt *fmt)
 {
 	char	*s;
@@ -36,7 +26,7 @@ int	ft_fmt_types(int res, va_list *ap, t_fmt *fmt)
 	s = va_arg(*ap, char *);
 	if (s == NULL)
 		s = "(null)";
-	if (ft_types_getlen2(res, fmt, s) || ft_types_bufinit(fmt))
+	if (ft_types_getlen2(res, fmt, s) || ft_type_bufinit(fmt))
 		return (FAILED);
 	if (fmt->minus)
 		ft_memcpy(fmt->buf2, s, fmt->point);

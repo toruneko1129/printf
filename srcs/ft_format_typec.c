@@ -1,15 +1,5 @@
 #include "../includes/ft_printf.h"
 
-static int	ft_typec_bufinit(t_fmt *fmt)
-{
-	fmt->buf2 = (char *)malloc((fmt->len2 + 1) * sizeof(char));
-	if (fmt->buf2 == NULL)
-		return (FAILED);
-	ft_memset(fmt->buf2, ' ', fmt->len2);
-	*(fmt->buf2 + fmt->len2) = '\0';
-	return (SUCCESS);
-}
-
 int	ft_fmt_typec(int res, va_list *ap, t_fmt *fmt)
 {
 	const int	c = va_arg(*ap, int);
@@ -17,7 +7,7 @@ int	ft_fmt_typec(int res, va_list *ap, t_fmt *fmt)
 	fmt->len2 = fmt->mfw;
 	if (!fmt->len2)
 		fmt->len2 = 1;
-	if (ft_fmt_check_size(res, *fmt) || ft_typec_bufinit(fmt))
+	if (ft_fmt_check_size(res, *fmt) || ft_type_bufinit(fmt))
 		return (FAILED);
 	if (fmt->minus)
 		*(fmt->buf2) = (unsigned char)c;

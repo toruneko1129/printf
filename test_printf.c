@@ -287,7 +287,7 @@ int	main(void)
 	//test_fmt_point();
 	//test_fmt_type();
 	//test_fmt_all();
-	//check_typec();
+	check_typec();
 	check_types();
 	return (0);
 }
