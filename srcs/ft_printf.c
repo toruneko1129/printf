@@ -20,6 +20,8 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (FAILED);
 	if (fmt->type == 'c')
 		return (ft_fmt_typec(res, ap, fmt));
+	if (fmt->type == 's')
+		return (ft_fmt_types(res, ap, fmt));
 	return (SUCCESS);
 }
 

@@ -205,7 +205,7 @@ void	check_output(const char *str, int res)
 	ft_putchar_fd('\n', 1);
 }
 
-void	test_typec(void)
+void	check_typec(void)
 {
 	char	*str;
 	int		res;
@@ -230,6 +230,37 @@ void	test_typec(void)
 	check_output(str, res);
 }
 
+void	check_types(void)
+{
+	char	*str;
+	int		res;
+
+	str = "test:%s";
+	res = ft_printf(str, "hogehoge");
+	check_output(str, res);
+	str = "I'm %s.%s%s";
+	res = ft_printf(str, "hkawakit", "Hello", "World");
+	check_output(str, res);
+	str = "empty string:%s";
+	res = ft_printf(str, "");
+	check_output(str, res);
+	str = "mfw:%6s";
+	res = ft_printf(str, "hoge");
+	check_output(str, res);
+	str = "mfw:%-6s";
+	res = ft_printf(str, "hoge");
+	check_output(str, res);
+	str = "pre:%.6s";
+	res = ft_printf(str, "hogefuga");
+	check_output(str, res);
+	str = "mix:%10.6s";
+	res = ft_printf(str, "hogefuga");
+	check_output(str, res);
+	str = "mix:%-10.6s";
+	res = ft_printf(str, "hogefuga");
+	check_output(str, res);
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -244,6 +275,7 @@ int	main(void)
 	//test_fmt_point();
 	//test_fmt_type();
 	//test_fmt_all();
-	test_typec();
+	//check_typec();
+	check_types();
 	return (0);
 }
