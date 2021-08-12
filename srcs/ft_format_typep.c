@@ -29,36 +29,41 @@ static char	*ft_typep_get_str(uintptr_t p, int size)
 		if (p % 16 <= 9)
 			*(res + size) = '0' + p % 16;
 		else
-			*(res + size) = 'a' + p % 16;
+			*(res + size) = 'a' + p % 16 - 10;
 		p /= 16;
 	}
 	return (res);
 }
 
-static int ft_typep_getlen2(int res, t_fmt *fmt, const int size)
+static int	ft_typep_getlen2(int res, t_fmt *fmt, int size)
 {
 	fmt->len2 = size;
 	if (fmt->mfw > size)
 		fmt->len2 = fmt->mfw;
-	if (fmt->len >= INT_MAX - res - fmt->len2)
+	if (ft_fmt_check_size(res, *fmt))
 		return (FAILED);
 	return (SUCCESS);
-}
-
-static int	ft_typep_bufinit(t_fmt *fmt)
-{
-	fmt->buf2 = (char *)malloc((fmt->len2 + 1) * sizeof(char));
-	if (fmt->buf2 == NULL)
-		return (FAILED);
 }
 
 int	ft_fmt_typep(int res, va_list *ap, t_fmt *fmt)
 {
 	const uintptr_t	p = va_arg(*ap, uintptr_t);
-	const int		size = ft_typep_get_strsize(p);
-	const char		*str = ft_typep_get_str(p, (int)size);
+	int				size;
+	char			*str;
 
+	size = ft_typep_get_strsize(p);
+	str = ft_typep_get_str(p, size);
 	if (str == NULL)
 		return (FAILED);
+	if (ft_typep_getlen2(res, fmt, size) || ft_type_bufinit(fmt))
+	{
+		free(str);
+		return (FAILED);
+	}
+	if (fmt->minus)
+		ft_memcpy(fmt->buf2, str, size);
+	else
+		ft_memcpy(fmt->buf2 + fmt->len2 - size, str, size);
+	free(str);
 	return (SUCCESS);
 }

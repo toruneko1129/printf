@@ -273,6 +273,30 @@ void	check_types(void)
 	check_output(str, res);
 }
 
+void	check_typep(void)
+{
+	void	*p;
+	char	*str;
+	int		res;
+
+	p = ft_strdup("hoge");
+	printf("p:%p\n", p);
+	str = "test:%p";
+	res = ft_printf(str, p);
+	check_output(str, res);
+	str = "minus:%-20p";
+	res = ft_printf(str, p);
+	check_output(str, res);
+	str = "mfw:%20p";
+	res = ft_printf(str, p);
+	check_output(str, res);
+	str = "invalid%2147483640p";
+	res = ft_printf(str, p);
+	check_output(str, res);
+	free(p);
+
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -287,7 +311,8 @@ int	main(void)
 	//test_fmt_point();
 	//test_fmt_type();
 	//test_fmt_all();
-	check_typec();
-	check_types();
+	//check_typec();
+	//check_types();
+	check_typep();
 	return (0);
 }

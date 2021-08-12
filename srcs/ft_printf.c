@@ -22,6 +22,8 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (ft_fmt_typec(res, ap, fmt));
 	if (fmt->type == 's')
 		return (ft_fmt_types(res, ap, fmt));
+	if (fmt->type == 'p')
+		return (ft_fmt_typep(res, ap, fmt));
 	return (SUCCESS);
 }
 
@@ -55,7 +57,6 @@ int	ft_printf(const char *str, ...)
 			ft_printf_end(&ap, fmt);
 			return (-1);
 		}
-		//check_fmt_content(fmt);
 		ft_fmtfree(fmt);
 	}
 	ft_printf_end(&ap, fmt);

@@ -38,5 +38,6 @@ void	ft_load_precision(const char **str, t_fmt *fmt);
 void	ft_load_type(const char **str, t_fmt *fmt);
 int		ft_fmt_typec(int res, va_list *ap, t_fmt *fmt);
 int		ft_fmt_types(int res, va_list *ap, t_fmt *fmt);
+int		ft_fmt_typep(int res, va_list *ap, t_fmt *fmt);
 
 #endif
