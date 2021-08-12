@@ -22,6 +22,7 @@ void	check_fmt_content(t_fmt fmt)
 	printf("\n");
 }
 
+/*
 void	check_fmt_free(void)
 {
 	t_fmt	fmt;
@@ -41,6 +42,7 @@ void	check_fmt_free(void)
 	ft_fmtfree(&fmt);
 	check_fmt_content(fmt);
 }
+*/
 
 void	check_fmt_buf1(const char *str, int res, t_fmt fmt)
 {
