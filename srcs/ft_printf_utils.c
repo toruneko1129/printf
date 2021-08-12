@@ -1,12 +1,7 @@
 #include "../includes/ft_printf.h"
 
-t_fmt	*ft_fmtnew(void)
+void	ft_fmtnew(t_fmt *new)
 {
-	t_fmt	*new;
-
-	new = (t_fmt *)malloc(sizeof(t_fmt));
-	if (new == NULL)
-		return (NULL);
 	new->len = 0;
 	new->buf = NULL;
 	new->hash = 0;
@@ -19,7 +14,6 @@ t_fmt	*ft_fmtnew(void)
 	new->type = '\0';
 	new->len2 = 0;
 	new->buf2 = NULL;
-	return (new);
 }
 
 void	ft_fmtfree(t_fmt *fmt)
@@ -28,8 +22,6 @@ void	ft_fmtfree(t_fmt *fmt)
 	fmt->buf = NULL;
 	free(fmt->buf2);
 	fmt->buf2 = NULL;
-	free(fmt);
-	fmt = NULL;
 }
 
 int	ft_isoverflow(const char *str)
@@ -64,4 +56,6 @@ void	ft_printf_end(va_list *ap, t_fmt *fmt)
 {
 	va_end(*ap);
 	ft_fmtfree(fmt);
+	free(fmt);
+	fmt = NULL;
 }

@@ -22,7 +22,7 @@ typedef struct s_fmt
 	char	*buf2;
 }	t_fmt;
 
-t_fmt	*ft_fmtnew(void);
+void	ft_fmtnew(t_fmt *new);
 void	ft_fmtfree(t_fmt *fmt);
 int		ft_isoverflow(const char *str);
 int		ft_getwidth(const char **str);

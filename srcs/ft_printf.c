@@ -41,14 +41,12 @@ int	ft_printf(const char *str, ...)
 
 	res = 0;
 	va_start(ap, str);
+	fmt = (t_fmt *)malloc(sizeof(t_fmt));
+	if (fmt == NULL)
+		return (-1);
 	while (*str)
 	{
-		fmt = ft_fmtnew();
-		if (fmt == NULL)
-		{
-			ft_printf_end(&ap, fmt);
-			return (-1);
-		}
+		ft_fmtnew(fmt);
 		ft_load_fmt(&str, res, fmt);
 		if (ft_fmt_to_str(res, &ap, fmt) || ft_write_buf(&res, *fmt))
 		{
@@ -58,6 +56,6 @@ int	ft_printf(const char *str, ...)
 		//check_fmt_content(fmt);
 		ft_fmtfree(fmt);
 	}
-	va_end(ap);
+	ft_printf_end(&ap, fmt);
 	return (res);
 }
