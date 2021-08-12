@@ -259,6 +259,9 @@ void	check_types(void)
 	str = "mix:%-10.6s";
 	res = ft_printf(str, "hogefuga");
 	check_output(str, res);
+	str = "null:%s";
+	res = ft_printf(str, NULL);
+	check_output(str, res);
 }
 
 int	main(void)

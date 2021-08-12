@@ -31,8 +31,11 @@ static int	ft_types_bufinit(t_fmt *fmt)
 
 int	ft_fmt_types(int res, va_list *ap, t_fmt *fmt)
 {
-	const char	*s = va_arg(*ap, char *);
+	char	*s;
 
+	s = va_arg(*ap, char *);
+	if (s == NULL)
+		s = "(null)";
 	if (ft_types_getlen2(res, fmt, s) || ft_types_bufinit(fmt))
 		return (FAILED);
 	if (fmt->minus)
