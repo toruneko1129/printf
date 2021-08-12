@@ -2,6 +2,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdint.h>
 # include "../libft/libft.h"
 # define SUCCESS 0
 # define FAILED 1
@@ -22,12 +23,13 @@ typedef struct s_fmt
 	char	*buf2;
 }	t_fmt;
 
+int		ft_printf(const char *str, ...);
 void	ft_fmtnew(t_fmt *new);
 void	ft_fmtfree(t_fmt *fmt);
 int		ft_isoverflow(const char *str);
 int		ft_getwidth(const char **str);
 void	ft_printf_end(va_list *ap, t_fmt *fmt);
-int		ft_printf(const char *str, ...);
+int		ft_fmt_check_size(int res, t_fmt fmt);
 int		ft_load_upto_percent(const char **str, int res, t_fmt *fmt);
 void	ft_load_flags(const char **str, t_fmt *fmt);
 void	ft_load_mfw(const char **str, t_fmt *fmt);

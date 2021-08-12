@@ -228,6 +228,9 @@ void	check_typec(void)
 	str = "hoge:%cfuga:%2147483640c";
 	res = ft_printf(str, 'x', 'y');
 	check_output(str, res);
+	str = "%1c";
+	res = ft_printf(str, 'a');
+	check_output(str, res);
 }
 
 void	check_types(void)
@@ -262,6 +265,12 @@ void	check_types(void)
 	str = "null:%s";
 	res = ft_printf(str, NULL);
 	check_output(str, res);
+	str = "short:%4s";
+	res = ft_printf(str, "hogefuga");
+	check_output(str, res);
+	str = "%2147483647s";
+	res = ft_printf(str, "invalid");
+	check_output(str, res);
 }
 
 int	main(void)
@@ -278,7 +287,7 @@ int	main(void)
 	//test_fmt_point();
 	//test_fmt_type();
 	//test_fmt_all();
-	//check_typec();
-	check_types();
+	check_typec();
+	//check_types();
 	return (0);
 }
