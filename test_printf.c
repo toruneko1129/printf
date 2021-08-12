@@ -293,6 +293,12 @@ void	check_typep(void)
 	str = "invalid%2147483640p";
 	res = ft_printf(str, p);
 	check_output(str, res);
+	str = "null:%p%p";
+	res = ft_printf(str, 0, 0);
+	check_output(str, res);
+	str = "%s%c %p";
+	res = ft_printf(str, "mix test", ':', p);
+	check_output(str, res);
 	free(p);
 
 }

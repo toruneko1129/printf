@@ -4,6 +4,8 @@ static int	ft_typep_get_strsize(uintptr_t p)
 {
 	int		size;
 
+	if (p == (uintptr_t)0)
+		return (3);
 	size = 2;
 	while (p)
 	{
@@ -23,9 +25,8 @@ static char	*ft_typep_get_str(uintptr_t p, int size)
 	*res = '0';
 	*(res + 1) = 'x';
 	*(res + size) = '\0';
-	while (p)
+	while (--size - 1)
 	{
-		--size;
 		if (p % 16 <= 9)
 			*(res + size) = '0' + p % 16;
 		else
