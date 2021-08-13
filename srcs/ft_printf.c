@@ -1,5 +1,4 @@
 #include "../includes/ft_printf.h"
-#include "../test_printf.h"
 
 static void	ft_load_fmt(const char **str, int res, t_fmt *fmt)
 {
@@ -26,6 +25,8 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (ft_fmt_typep(res, ap, fmt));
 	if (fmt->type == 'd' || fmt->type == 'i')
 		return (ft_fmt_typedi(res, ap, fmt));
+	if (fmt->type == 'u')
+		return (ft_fmt_typeu(res, ap, fmt));
 	return (SUCCESS);
 }
 

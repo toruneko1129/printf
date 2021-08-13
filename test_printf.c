@@ -361,6 +361,37 @@ void	check_typedi(void)
 	check_output(str, res);
 }
 
+void check_typeu(void)
+{
+	char	*str;
+	int		res;
+
+	str = "%u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%10u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%010u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-010u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%10.5u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-10.5u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%5.10u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%010.5u";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -379,6 +410,6 @@ int	main(void)
 	//check_types();
 	//check_typep();
 	//check_typedi();
-	ft_printf("%010.5d", 42);
+	check_typeu();
 	return (0);
 }

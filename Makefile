@@ -2,12 +2,14 @@ NAME	=	libftprintf.a
 SRCDIR	=	./srcs
 SRCLIST	=	ft_printf.c \
 			ft_printf_utils.c \
+			ft_uitoa.c \
 			ft_load_format.c \
 			ft_format_type_utils.c \
 			ft_format_typec.c \
 			ft_format_types.c \
 			ft_format_typep.c \
-			ft_format_typedi.c
+			ft_format_typedi.c \
+			ft_format_typeu.c
 SRCS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 OBJS	=	$(SRCS:.c=.o)
 INCLUDE	=	-I ./includes
