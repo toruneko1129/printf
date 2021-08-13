@@ -303,6 +303,64 @@ void	check_typep(void)
 
 }
 
+void	check_typedi(void)
+{
+	char	*str;
+	int		res;
+
+	str = "test:%d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%010d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "% 010d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "% 0d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%+010d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%+.10d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-5.10d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "test:%d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%010d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "% 010d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "% 0d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%+010d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%+.10d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%-5.10d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%10.5d";
+	res = ft_printf(str, -42);
+	check_output(str, res);
+	str = "%10.5d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-10.5d";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -319,6 +377,7 @@ int	main(void)
 	//test_fmt_all();
 	//check_typec();
 	//check_types();
-	check_typep();
+	//check_typep();
+	check_typedi();
 	return (0);
 }

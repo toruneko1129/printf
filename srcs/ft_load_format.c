@@ -52,6 +52,8 @@ void	ft_load_precision(const char **str, t_fmt *fmt)
 		return ;
 	++(*str);
 	fmt->point = ft_getwidth(str);
+	if (fmt->point != -1)
+		fmt->zero = 0;
 }
 
 void	ft_load_type(const char **str, t_fmt *fmt)

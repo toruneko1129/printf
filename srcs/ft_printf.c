@@ -24,6 +24,8 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (ft_fmt_types(res, ap, fmt));
 	if (fmt->type == 'p')
 		return (ft_fmt_typep(res, ap, fmt));
+	if (fmt->type == 'd' || fmt->type == 'i')
+		return (ft_fmt_typedi(res, ap, fmt));
 	return (SUCCESS);
 }
 

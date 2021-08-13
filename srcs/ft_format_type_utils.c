@@ -16,3 +16,15 @@ int	ft_type_bufinit(t_fmt *fmt)
 	*(fmt->buf2 + fmt->len2) = '\0';
 	return (SUCCESS);
 }
+
+int	ft_need_sign(int d, t_fmt fmt)
+{
+	return (d < 0 || ((fmt.space || fmt.plus) && d >= 0));
+}
+
+char	*ft_strfree(char *tmp, char *res)
+{
+	free(tmp);
+	free(res);
+	return (NULL);
+}
