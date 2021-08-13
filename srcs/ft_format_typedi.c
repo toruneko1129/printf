@@ -75,7 +75,7 @@ static void	ft_typedi_getbuf(t_fmt *fmt, int d, int sign, char *str)
 	if (fmt->zero)
 	{
 		ft_memset(fmt->buf2, '0', fmt->len2 - len + sign);
-		if (d <= 0)
+		if (d < 0)
 			*(fmt->buf2) = '-';
 		if (fmt->plus)
 			*(fmt->buf2) = '+';
