@@ -410,6 +410,8 @@ int	main(void)
 	//check_types();
 	//check_typep();
 	//check_typedi();
-	check_typeu();
+	//check_typeu();
+	int res = ft_printf("%10.0d", 0);
+	printf("\n%d\n", res);
 	return (0);
 }

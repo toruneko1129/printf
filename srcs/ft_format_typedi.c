@@ -1,11 +1,11 @@
 #include "../includes/ft_printf.h"
 
-static int	ft_typedi_get_strsize(int d, int sign)
+static int	ft_typedi_get_strsize(int d, t_fmt *fmt, int sign)
 {
 	int		size;
 
 	size = 0;
-	if (d == 0)
+	if (d == 0 && fmt->point != 0)
 		++size;
 	size += sign;
 	while (d)
@@ -91,9 +91,7 @@ int	ft_fmt_typedi(int res, va_list *ap, t_fmt *fmt)
 	int			size;
 	char		*str;
 
-	if (d == 0 && fmt->point == 0)
-		return (SUCCESS);
-	size = ft_typedi_get_strsize(d, sign);
+	size = ft_typedi_get_strsize(d, fmt, sign);
 	if (ft_typedi_getlen2(res, fmt, size, sign) || ft_type_bufinit(fmt))
 		return (FAILED);
 	str = ft_typedi_getstr(fmt, d, sign, size);
