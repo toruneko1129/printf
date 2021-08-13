@@ -34,6 +34,7 @@ int		ft_type_bufinit(t_fmt *fmt);
 int		ft_need_sign(int d, t_fmt fmt);
 char	*ft_strfree(char *tmp, char *res);
 char	*ft_uitoa(unsigned int n);
+char	*ft_uitoa_hex(unsigned int n);
 int		ft_load_upto_percent(const char **str, int res, t_fmt *fmt);
 void	ft_load_flags(const char **str, t_fmt *fmt);
 void	ft_load_mfw(const char **str, t_fmt *fmt);
@@ -44,5 +45,7 @@ int		ft_fmt_types(int res, va_list *ap, t_fmt *fmt);
 int		ft_fmt_typep(int res, va_list *ap, t_fmt *fmt);
 int		ft_fmt_typedi(int res, va_list *ap, t_fmt *fmt);
 int		ft_fmt_typeu(int res, va_list *ap, t_fmt *fmt);
+int		ft_fmt_typex(int res, va_list *ap, t_fmt *fmt);
+int		ft_fmt_typeper(int res, t_fmt *fmt);
 
 #endif

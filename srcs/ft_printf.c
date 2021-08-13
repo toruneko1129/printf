@@ -19,14 +19,20 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (FAILED);
 	if (fmt->type == 'c')
 		return (ft_fmt_typec(res, ap, fmt));
-	if (fmt->type == 's')
+	else if (fmt->type == 's')
 		return (ft_fmt_types(res, ap, fmt));
-	if (fmt->type == 'p')
+	else if (fmt->type == 'p')
 		return (ft_fmt_typep(res, ap, fmt));
-	if (fmt->type == 'd' || fmt->type == 'i')
+	else if (fmt->type == 'd' || fmt->type == 'i')
 		return (ft_fmt_typedi(res, ap, fmt));
-	if (fmt->type == 'u')
+	else if (fmt->type == 'u')
 		return (ft_fmt_typeu(res, ap, fmt));
+	else if (fmt->type == 'x' || fmt->type == 'X')
+		return (ft_fmt_typex(res, ap, fmt));
+	else if (fmt->type == '%')
+		return (ft_fmt_typeper(res, fmt));
+	else
+		return (FAILED);
 	return (SUCCESS);
 }
 

@@ -9,7 +9,9 @@ SRCLIST	=	ft_printf.c \
 			ft_format_types.c \
 			ft_format_typep.c \
 			ft_format_typedi.c \
-			ft_format_typeu.c
+			ft_format_typeu.c \
+			ft_format_typex.c \
+			ft_format_typeper.c
 SRCS	=	$(addprefix $(SRCDIR)/, $(SRCLIST))
 OBJS	=	$(SRCS:.c=.o)
 INCLUDE	=	-I ./includes

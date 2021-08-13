@@ -392,6 +392,77 @@ void check_typeu(void)
 	check_output(str, res);
 }
 
+void check_typex(void)
+{
+	char	*str;
+	int		res;
+
+	str = "%x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%10x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%010x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-010x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%10.5x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-10.5x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%5.10x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%010.5x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%#10x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%-#10x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%0#10x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%0#1x";
+	res = ft_printf(str, 42);
+	check_output(str, res);
+	str = "%0#0x";
+	res = ft_printf(str, 0);
+	check_output(str, res);
+	str = "%#x";
+	res = ft_printf(str, 0);
+	check_output(str, res);
+}
+
+void	check_typeper(void)
+{
+	char	*str;
+	int		res;
+
+	str = "%%";
+	res = ft_printf(str);
+	check_output(str, res);
+	str = "%%%%";
+	res = ft_printf(str);
+	check_output(str, res);
+	str = "hoge%%%%fuga%%";
+	res = ft_printf(str);
+	check_output(str, res);
+	str = "%10.5%";
+	res = ft_printf(str);
+	check_output(str, res);
+	str = "%-+ 10%";
+	res = ft_printf(str);
+	check_output(str, res);
+}
+
 int	main(void)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -411,9 +482,7 @@ int	main(void)
 	//check_typep();
 	//check_typedi();
 	//check_typeu();
-	int res = ft_printf("%-+10.0d", 0);
-	printf("\n%d\n", res);
-	res = ft_printf("%10.0u", 0);
-	printf("\n%d\n", res);
+	//check_typex();
+	check_typeper();
 	return (0);
 }
