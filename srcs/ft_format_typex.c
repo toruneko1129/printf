@@ -75,7 +75,8 @@ static void	ft_typex_getbuf(t_fmt *fmt, int sign, char *str)
 	if (fmt->zero)
 	{
 		ft_memset(fmt->buf2, '0', fmt->len2 - len + sign);
-		*(fmt->buf2 + 1) = fmt->type;
+		if (fmt->hash)
+			*(fmt->buf2 + 1) = fmt->type;
 	}
 }
 
