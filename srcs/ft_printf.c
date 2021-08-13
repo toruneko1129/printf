@@ -31,8 +31,6 @@ static int	ft_fmt_to_str(int res, va_list *ap, t_fmt *fmt)
 		return (ft_fmt_typex(res, ap, fmt));
 	else if (fmt->type == '%')
 		return (ft_fmt_typeper(res, fmt));
-	else
-		return (FAILED);
 	return (SUCCESS);
 }
 
