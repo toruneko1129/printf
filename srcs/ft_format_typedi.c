@@ -19,17 +19,17 @@ static int	ft_typedi_get_strsize(int d, int sign)
 static int	ft_typedi_getlen2(int res, t_fmt *fmt, int size, int sign)
 {
 	fmt->len2 = size;
-	if (fmt->point > fmt->len2 - sign)
+	if (fmt->point > size - sign)
 	{
 		fmt->len2 = fmt->point;
 		if (fmt->point == INT_MAX)
 			return (FAILED);
 		fmt->len2 += sign;
 	}
+	else (fmt->point < size - sign)
+		fmt->point = size - sign;
 	if (fmt->mfw > fmt->len2)
 		fmt->len2 = fmt->mfw;
-	if (fmt->point < size - sign)
-		fmt->point = size - sign;
 	if (ft_fmt_check_size(res, *fmt))
 		return (FAILED);
 	return (SUCCESS);
