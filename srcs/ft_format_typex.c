@@ -46,8 +46,8 @@ static char	*ft_typex_getstr(t_fmt *fmt, unsigned int x, int sign, int size)
 	tmp = ft_uitoa_hex(x);
 	if (fmt->type == 'X')
 	{
-		i = 0;
-		while (*(tmp + i))
+		i = -1;
+		while (*(tmp + ++i))
 			*(tmp + i) = ft_toupper(*(tmp + i));
 	}
 	if (res == NULL || tmp == NULL)
