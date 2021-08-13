@@ -58,7 +58,7 @@ char	*ft_uitoa_hex(unsigned int n)
 	while (n)
 	{
 		--len;
-		if (n <= 9)
+		if (n % 16 <= 9)
 			*(res + len) = '0' + n % 16;
 		else
 			*(res + len) = 'a' + n % 16 - 10;
