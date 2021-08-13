@@ -411,7 +411,9 @@ int	main(void)
 	//check_typep();
 	//check_typedi();
 	//check_typeu();
-	int res = ft_printf("%10.0d", 0);
+	int res = ft_printf("%-+10.0d", 0);
+	printf("\n%d\n", res);
+	res = ft_printf("%10.0u", 0);
 	printf("\n%d\n", res);
 	return (0);
 }

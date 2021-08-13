@@ -1,12 +1,12 @@
 #include "../includes/ft_printf.h"
 
-static int	ft_typeu_get_strsize(unsigned int u)
+static int	ft_typeu_get_strsize(unsigned int u, t_fmt *fmt)
 {
 	int		size;
 
-	if (u == 0)
-		return (1);
 	size = 0;
+	if (u == 0 && fmt->point != 0)
+		++size;
 	while (u)
 	{
 		++size;
@@ -67,9 +67,7 @@ int	ft_fmt_typeu(int res, va_list *ap, t_fmt *fmt)
 	int					size;
 	char				*str;
 
-	if (u == 0 && fmt->point == 0)
-		return (SUCCESS);
-	size = ft_typeu_get_strsize(u);
+	size = ft_typeu_get_strsize(u, fmt);
 	if (ft_typeu_getlen2(res, fmt, size) || ft_type_bufinit(fmt))
 		return (FAILED);
 	str = ft_typeu_getstr(fmt, u, size);
