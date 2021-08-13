@@ -378,6 +378,7 @@ int	main(void)
 	//check_typec();
 	//check_types();
 	//check_typep();
-	check_typedi();
+	//check_typedi();
+	ft_printf("%.2d", -1);
 	return (0);
 }
