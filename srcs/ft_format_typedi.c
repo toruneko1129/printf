@@ -26,7 +26,7 @@ static int	ft_typedi_getlen2(int res, t_fmt *fmt, int size, int sign)
 			return (FAILED);
 		fmt->len2 += sign;
 	}
-	else (fmt->point < size - sign)
+	else
 		fmt->point = size - sign;
 	if (fmt->mfw > fmt->len2)
 		fmt->len2 = fmt->mfw;
