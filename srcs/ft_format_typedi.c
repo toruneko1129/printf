@@ -47,12 +47,12 @@ static char	*ft_typedi_getstr(t_fmt *fmt, int d, int sign, int size)
 		ft_strfree(tmp, res);
 	*(res + fmt->point + sign) = '\0';
 	ft_memset(res, '0', fmt->point + sign);
-	if (fmt->plus)
+	if (d < 0)
+		*res = '-';
+	else if (fmt->plus)
 		*res = '+';
 	else if (fmt->space)
 		*res = ' ';
-	else if (d < 0)
-		*res = '-';
 	if (d >= 0)
 		ft_memcpy(res + start, tmp, size - sign);
 	else
@@ -61,7 +61,7 @@ static char	*ft_typedi_getstr(t_fmt *fmt, int d, int sign, int size)
 	return (res);
 }
 
-static void	ft_typedi_getbuf(t_fmt *fmt, char *str, int sign)
+static void	ft_typedi_getbuf(t_fmt *fmt, int d, int sign, char *str)
 {
 	int		len;
 
@@ -75,12 +75,12 @@ static void	ft_typedi_getbuf(t_fmt *fmt, char *str, int sign)
 	if (fmt->zero)
 	{
 		ft_memset(fmt->buf2, '0', fmt->len2 - len + sign);
+		if (d <= 0)
+			*(fmt->buf2) = '-';
 		if (fmt->plus)
 			*(fmt->buf2) = '+';
 		else if (fmt->space)
 			*(fmt->buf2) = ' ';
-		else if (sign)
-			*(fmt->buf2) = '-';
 	}
 }
 
@@ -99,7 +99,7 @@ int	ft_fmt_typedi(int res, va_list *ap, t_fmt *fmt)
 	str = ft_typedi_getstr(fmt, d, sign, size);
 	if (str == NULL)
 		return (FAILED);
-	ft_typedi_getbuf(fmt, str, sign);
+	ft_typedi_getbuf(fmt, d, sign, str);
 	free(str);
 	return (SUCCESS);
 }
