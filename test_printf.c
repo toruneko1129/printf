@@ -379,6 +379,6 @@ int	main(void)
 	//check_types();
 	//check_typep();
 	//check_typedi();
-	ft_printf("%.2d", -1);
+	ft_printf("%010.5d", 42);
 	return (0);
 }

@@ -39,7 +39,7 @@ static char	*ft_typedi_getstr(t_fmt *fmt, int d, int sign, int size)
 {
 	char		*res;
 	char		*tmp;
-	const int	start = fmt->point + sign * 2 - size;
+	const int	start = fmt->point - size + sign * 2;
 
 	res = (char *)malloc((fmt->point + sign + 1) * sizeof(char));
 	tmp = ft_itoa(d);
