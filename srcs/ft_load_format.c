@@ -20,8 +20,6 @@ int	ft_load_upto_percent(const char **str, int res, t_fmt *fmt)
 
 void	ft_load_flags(const char **str, t_fmt *fmt)
 {
-	if (**str != '%')
-		return ;
 	while (ft_strchr("#0- +", *(++(*str))) != NULL)
 	{
 		if (**str == '#')

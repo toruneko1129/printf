@@ -483,6 +483,7 @@ int	main(void)
 	//check_typedi();
 	//check_typeu();
 	//check_typex();
-	check_typeper();
+	//check_typeper();
+	ft_printf("hoge%cfuga\n", 'r');
 	return (0);
 }
