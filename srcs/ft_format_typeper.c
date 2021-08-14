@@ -13,4 +13,3 @@ int	ft_fmt_typeper(int res, t_fmt *fmt)
 		*(fmt->buf2 + fmt->len2 - 1) = '%';
 	return (SUCCESS);
 }
-
