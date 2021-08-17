@@ -3,4 +3,5 @@
 */*.o
 */*.a
 a.out
-printfTester
+printfTester/
+pft/

@@ -11,5 +11,7 @@ int	ft_fmt_typeper(int res, t_fmt *fmt)
 		*(fmt->buf2) = '%';
 	else
 		*(fmt->buf2 + fmt->len2 - 1) = '%';
+	if (fmt->zero)
+		ft_memset(fmt->buf2, '0', fmt->len2 - 1);
 	return (SUCCESS);
 }
