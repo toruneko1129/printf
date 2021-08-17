@@ -34,9 +34,7 @@ int	ft_isoverflow(const char *str)
 	lim = INT_MAX % 10;
 	res = 0;
 	while (ft_isdigit(*str) && (res < off || (res == off && *str - '0' <= lim)))
-	{
 		res = res * 10 + *(str++) - '0';
-	}
 	return (ft_isdigit(*str));
 }
 
@@ -44,9 +42,9 @@ int	ft_getwidth(const char **str)
 {
 	int		res;
 
-	res = ft_atoi(*str);
 	if (ft_isoverflow(*str))
-		res = INT_MAX;
+		return (INT_MAX);
+	res = ft_atoi(*str);
 	while (ft_isdigit(**str))
 		++(*str);
 	return (res);

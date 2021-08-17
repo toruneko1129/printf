@@ -11,6 +11,8 @@ int	ft_load_upto_percent(const char **str, int res, t_fmt *fmt)
 	len = end - *str;
 	if (len >= (size_t)INT_MAX - res)
 		return (-1);
+	if (len == 0)
+		return (0);
 	fmt->buf = ft_substr(*str, 0, len);
 	if (fmt->buf == NULL)
 		return (-1);

@@ -463,7 +463,12 @@ void	check_typeper(void)
 	check_output(str, res);
 }
 
-int	main(void)
+void	test_typec(int argc)
+{
+	
+}
+
+int	main(int argc, char **argv)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
 	//printf("\n%d\n", res);
@@ -484,6 +489,5 @@ int	main(void)
 	//check_typeu();
 	//check_typex();
 	//check_typeper();
-	ft_printf("hoge%cfuga\n", 'r');
 	return (0);
 }
