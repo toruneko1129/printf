@@ -87,7 +87,7 @@ static void	ft_typedi_getbuf(t_fmt *fmt, int d, int sign, char *str)
 int	ft_fmt_typedi(int res, va_list *ap, t_fmt *fmt)
 {
 	const int	d = va_arg(*ap, int);
-	const int	sign = ft_need_sign(d, *fmt);
+	const int	sign = ft_need_sign(d, fmt);
 	int			size;
 	char		*str;
 

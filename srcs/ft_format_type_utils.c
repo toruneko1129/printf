@@ -17,9 +17,9 @@ int	ft_type_bufinit(t_fmt *fmt)
 	return (SUCCESS);
 }
 
-int	ft_need_sign(int d, t_fmt fmt)
+int	ft_need_sign(int d, t_fmt *fmt)
 {
-	return (d < 0 || ((fmt.space || fmt.plus) && d >= 0));
+	return (d < 0 || ((fmt->space || fmt->plus) && d >= 0));
 }
 
 char	*ft_strfree(char *tmp, char *res)
