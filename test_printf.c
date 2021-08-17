@@ -486,6 +486,6 @@ int	main(int argc, char **argv)
 	//check_typeper();
 	if (argc)
 		argv[1] = "a";
-	ft_printf("%+010d\n", -42);
+	ft_printf("%#010X\n", 42);
 	return (0);
 }

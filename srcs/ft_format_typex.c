@@ -41,7 +41,7 @@ static char	*ft_typex_getstr(t_fmt *fmt, unsigned int x, int sign, int size)
 	const int	start = fmt->point - size + sign * 2;
 	int			i;
 
-	res = (char *)malloc((fmt->point + sign + 1) * sizeof(char));
+	res = (char *)malloc(((size_t)fmt->point + sign + 1) * sizeof(char));
 	tmp = ft_uitoa_hex(x);
 	if (fmt->type == 'X')
 	{
@@ -50,7 +50,7 @@ static char	*ft_typex_getstr(t_fmt *fmt, unsigned int x, int sign, int size)
 			*(tmp + i) = ft_toupper(*(tmp + i));
 	}
 	if (res == NULL || tmp == NULL)
-		ft_strfree(tmp, res);
+		return (ft_strfree(tmp, res));
 	*(res + fmt->point + sign) = '\0';
 	ft_memset(res, '0', fmt->point + sign);
 	if (fmt->hash)
@@ -62,9 +62,8 @@ static char	*ft_typex_getstr(t_fmt *fmt, unsigned int x, int sign, int size)
 
 static void	ft_typex_getbuf(t_fmt *fmt, int sign, char *str)
 {
-	int		len;
+	const int	len = ft_strlen(str);
 
-	len = ft_strlen(str);
 	if (fmt->minus)
 	{
 		ft_memcpy(fmt->buf2, str, len);
