@@ -9,7 +9,7 @@ int	ft_fmt_check_size(int res, t_fmt *fmt)
 
 int	ft_type_bufinit(t_fmt *fmt)
 {
-	fmt->buf2 = (char *)malloc((fmt->len2 + 1) * sizeof(char));
+	fmt->buf2 = (char *)malloc(((size_t)fmt->len2 + 1) * sizeof(char));
 	if (fmt->buf2 == NULL)
 		return (FAILED);
 	ft_memset(fmt->buf2, ' ', fmt->len2);
@@ -19,7 +19,7 @@ int	ft_type_bufinit(t_fmt *fmt)
 
 int	ft_need_sign(int d, t_fmt *fmt)
 {
-	return (d < 0 || ((fmt->space || fmt->plus) && d >= 0));
+	return (d < 0 || (d >= 0 && (fmt->space || fmt->plus)));
 }
 
 char	*ft_strfree(char *tmp, char *res)

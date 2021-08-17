@@ -5,7 +5,7 @@ static int	ft_typedi_get_strsize(int d, t_fmt *fmt, int sign)
 	int		size;
 
 	size = sign;
-	if (d == 0 && fmt->point != 0)
+	if (!d && fmt->point)
 		++size;
 	while (d)
 	{
@@ -40,10 +40,10 @@ static char	*ft_typedi_getstr(t_fmt *fmt, int d, int sign, int size)
 	char		*tmp;
 	const int	start = fmt->point - size + sign * 2;
 
-	res = (char *)malloc((fmt->point + sign + 1) * sizeof(char));
+	res = (char *)malloc(((size_t)fmt->point + sign + 1) * sizeof(char));
 	tmp = ft_itoa(d);
 	if (res == NULL || tmp == NULL)
-		ft_strfree(tmp, res);
+		return (ft_strfree(tmp, res));
 	*(res + fmt->point + sign) = '\0';
 	ft_memset(res, '0', fmt->point + sign);
 	if (d < 0)
@@ -55,16 +55,15 @@ static char	*ft_typedi_getstr(t_fmt *fmt, int d, int sign, int size)
 	if (d >= 0)
 		ft_memcpy(res + start, tmp, size - sign);
 	else
-		ft_memcpy(res + start, tmp + 1, size - sign);
+		ft_memcpy(res + start, tmp + sign, size - sign);
 	free(tmp);
 	return (res);
 }
 
 static void	ft_typedi_getbuf(t_fmt *fmt, int d, int sign, char *str)
 {
-	int		len;
+	const int	len = ft_strlen(str);
 
-	len = ft_strlen(str);
 	if (fmt->minus)
 	{
 		ft_memcpy(fmt->buf2, str, len);
@@ -76,7 +75,7 @@ static void	ft_typedi_getbuf(t_fmt *fmt, int d, int sign, char *str)
 		ft_memset(fmt->buf2, '0', fmt->len2 - len + sign);
 		if (d < 0)
 			*(fmt->buf2) = '-';
-		if (fmt->plus)
+		else if (fmt->plus)
 			*(fmt->buf2) = '+';
 		else if (fmt->space)
 			*(fmt->buf2) = ' ';

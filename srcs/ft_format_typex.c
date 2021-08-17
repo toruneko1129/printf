@@ -4,10 +4,9 @@ static int	ft_typex_get_strsize(unsigned int x, t_fmt *fmt, int sign)
 {
 	int		size;
 
-	size = 0;
-	if (x == 0 && fmt->point != 0)
+	size = sign;
+	if (!x && fmt->point)
 		++size;
-	size += sign;
 	while (x)
 	{
 		++size;

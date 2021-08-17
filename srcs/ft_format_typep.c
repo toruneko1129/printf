@@ -19,7 +19,7 @@ static char	*ft_typep_get_str(uintptr_t p, int size)
 {
 	char	*res;
 
-	res = (char *)malloc((size + 1) * sizeof(char));
+	res = (char *)malloc(((size_t)size + 1) * sizeof(char));
 	if (res == NULL)
 		return (NULL);
 	*res = '0';

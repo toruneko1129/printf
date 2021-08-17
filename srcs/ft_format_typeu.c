@@ -5,7 +5,7 @@ static int	ft_typeu_get_strsize(unsigned int u, t_fmt *fmt)
 	int		size;
 
 	size = 0;
-	if (u == 0 && fmt->point != 0)
+	if (!u && fmt->point)
 		++size;
 	while (u)
 	{
@@ -35,10 +35,10 @@ static char	*ft_typeu_getstr(t_fmt *fmt, unsigned int u, int size)
 	char		*tmp;
 	const int	start = fmt->point - size;
 
-	res = (char *)malloc((fmt->point + 1) * sizeof(char));
+	res = (char *)malloc(((size_t)fmt->point + 1) * sizeof(char));
 	tmp = ft_uitoa(u);
 	if (res == NULL || tmp == NULL)
-		ft_strfree(tmp, res);
+		return (ft_strfree(tmp, res));
 	*(res + fmt->point) = '\0';
 	ft_memset(res, '0', fmt->point);
 	ft_memcpy(res + start, tmp, size);
@@ -48,9 +48,8 @@ static char	*ft_typeu_getstr(t_fmt *fmt, unsigned int u, int size)
 
 static void	ft_typeu_getbuf(t_fmt *fmt, char *str)
 {
-	int		len;
+	const int	len = ft_strlen(str);
 
-	len = ft_strlen(str);
 	if (fmt->minus)
 	{
 		ft_memcpy(fmt->buf2, str, len);
