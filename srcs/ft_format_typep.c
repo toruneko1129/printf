@@ -41,7 +41,7 @@ static int	ft_typep_getlen2(int res, t_fmt *fmt, int size)
 	fmt->len2 = size;
 	if (fmt->mfw > size)
 		fmt->len2 = fmt->mfw;
-	if (ft_fmt_check_size(res, *fmt))
+	if (ft_fmt_check_size(res, fmt))
 		return (FAILED);
 	return (SUCCESS);
 }

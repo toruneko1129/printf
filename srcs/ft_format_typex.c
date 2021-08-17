@@ -30,7 +30,7 @@ static int	ft_typex_getlen2(int res, t_fmt *fmt, int size, int sign)
 		fmt->point = size - sign;
 	if (fmt->mfw > fmt->len2)
 		fmt->len2 = fmt->mfw;
-	if (ft_fmt_check_size(res, *fmt))
+	if (ft_fmt_check_size(res, fmt))
 		return (FAILED);
 	return (SUCCESS);
 }

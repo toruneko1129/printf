@@ -14,7 +14,7 @@ static int	ft_types_getlen2(int res, t_fmt *fmt, const char *s)
 	if (size >= (size_t)INT_MAX)
 		return (FAILED);
 	fmt->len2 = size;
-	if (ft_fmt_check_size(res, *fmt))
+	if (ft_fmt_check_size(res, fmt))
 		return (FAILED);
 	return (SUCCESS);
 }

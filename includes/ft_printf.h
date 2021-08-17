@@ -29,7 +29,7 @@ void	ft_fmtfree(t_fmt *fmt);
 int		ft_isoverflow(const char *str);
 int		ft_getwidth(const char **str);
 void	ft_printf_end(va_list *ap, t_fmt *fmt);
-int		ft_fmt_check_size(int res, t_fmt fmt);
+int		ft_fmt_check_size(int res, t_fmt *fmt);
 int		ft_type_bufinit(t_fmt *fmt);
 int		ft_need_sign(int d, t_fmt fmt);
 char	*ft_strfree(char *tmp, char *res);
