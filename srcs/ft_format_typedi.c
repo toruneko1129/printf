@@ -4,10 +4,9 @@ static int	ft_typedi_get_strsize(int d, t_fmt *fmt, int sign)
 {
 	int		size;
 
-	size = 0;
+	size = sign;
 	if (d == 0 && fmt->point != 0)
 		++size;
-	size += sign;
 	while (d)
 	{
 		++size;
