@@ -7,3 +7,5 @@ printfTester/
 pft/
 42TESTERS-PRINTF/
 *.txt
+test_printf/
+test_printf*
