@@ -542,11 +542,12 @@ void	test_types(int argc)
 	str[13] = "testcase #%d: %10.0s\n";
 	s[0] = "hogefuga";
 	s[1] = "";
+	s[2] = NULL;
 	if (argc == 2)
 	{
 		rep(i, 14)
 		{
-			rep(j, 2)
+			rep(j, 3)
 			{
 				res = printf(str[i], ++testcase, s[j]);
 				print_res(res);
@@ -557,7 +558,7 @@ void	test_types(int argc)
 	{
 		rep(i, 14)
 		{
-			rep(j, 2)
+			rep(j, 3)
 			{
 				res = ft_printf(str[i], ++testcase, s[j]);
 				print_res(res);
