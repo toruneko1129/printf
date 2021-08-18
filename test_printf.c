@@ -481,8 +481,8 @@ void	test_typec(int argc)
 
 	str[0] = "testcase #%d: %c\n";
 	str[1] = "testcase #%d: %c %c %c %c %c %c %c %c %c %c\n";
-	str[2] = "testcase #%10d: %c\n";
-	str[3] = "testcase #%-10d: %c\n";
+	str[2] = "testcase #%d: %10c\n";
+	str[3] = "testcase #%d: %-10c\n";
 	rep(i, 16)
 		c[i] = '0' + i;
 	if (argc == 2)
@@ -503,6 +503,19 @@ void	test_typec(int argc)
 	}
 	else
 	{
+		rep2(i, 32, 127)
+		{
+			res = ft_printf(str[0], ++testcase, i);
+			print_res(res);
+		}
+		res = ft_printf(str[0], ++testcase, 200);
+		print_res(res);
+		res = ft_printf(str[1], ++testcase, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
+		print_res(res);
+		res = ft_printf(str[2], ++testcase, c[0]);
+		print_res(res);
+		res = ft_printf(str[3], ++testcase, c[0]);
+		print_res(res);
 	}
 }
 
