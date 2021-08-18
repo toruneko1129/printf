@@ -781,60 +781,238 @@ void	test_typeu(int argc)
 	}
 }
 
-void	test_typeu(int argc)
+void	test_typeupperx(int argc)
 {
 	char			*str[256];
-	unsigned int	u[16];
+	unsigned int	x[16];
 	int				res;
 
-	str[0] = "testcase #%d: %u\n";
-	str[1] = "testcase #%d: %0u\n";
-	str[2] = "testcase #%d: %-u\n";
-	str[3] = "testcase #%d: %-0u\n";
-	str[4] = "testcase #%d: %20u\n";
-	str[5] = "testcase #%d: %020u\n";
-	str[6] = "testcase #%d: %-20u\n";
-	str[7] = "testcase #%d: %-020u\n";
-	str[8] = "testcase #%d: %.15u\n";
-	str[9] = "testcase #%d: %0.15u\n";
-	str[10] = "testcase #%d: %-.15u\n";
-	str[11] = "testcase #%d: %-0.15u\n";
-	str[12] = "testcase #%d: %20.15u\n";
-	str[13] = "testcase #%d: %020.15u\n";
-	str[14] = "testcase #%d: %-20.15u\n";
-	str[15] = "testcase #%d: %-020.15u\n";
-	str[16] = "testcase #%d: %5.10u\n";
-	str[17] = "testcase #%d: %.0u\n";
-	str[18] = "testcase #%d: %2.0u %10.5u %5.10u\n";
-	u[0] = 0;
-	u[1] = UINT_MAX;
+	str[0] = "testcase #%d: %X\n";
+	str[1] = "testcase #%d: %0X\n";
+	str[2] = "testcase #%d: %-X\n";
+	str[3] = "testcase #%d: %-0X\n";
+	str[4] = "testcase #%d: %20X\n";
+	str[5] = "testcase #%d: %020X\n";
+	str[6] = "testcase #%d: %-20X\n";
+	str[7] = "testcase #%d: %-020X\n";
+	str[8] = "testcase #%d: %.15X\n";
+	str[9] = "testcase #%d: %0.15X\n";
+	str[10] = "testcase #%d: %-.15X\n";
+	str[11] = "testcase #%d: %-0.15X\n";
+	str[12] = "testcase #%d: %20.15X\n";
+	str[13] = "testcase #%d: %020.15X\n";
+	str[14] = "testcase #%d: %-20.15X\n";
+	str[15] = "testcase #%d: %-020.15X\n";
+	str[16] = "testcase #%d: %#X\n";
+	str[17] = "testcase #%d: %#0X\n";
+	str[18] = "testcase #%d: %#-X\n";
+	str[19] = "testcase #%d: %#-0X\n";
+	str[20] = "testcase #%d: %#20X\n";
+	str[21] = "testcase #%d: %#020X\n";
+	str[22] = "testcase #%d: %#-20X\n";
+	str[23] = "testcase #%d: %#-020X\n";
+	str[24] = "testcase #%d: %#.15X\n";
+	str[25] = "testcase #%d: %#0.15X\n";
+	str[26] = "testcase #%d: %#-.15X\n";
+	str[27] = "testcase #%d: %#-0.15X\n";
+	str[28] = "testcase #%d: %#20.15X\n";
+	str[29] = "testcase #%d: %#020.15X\n";
+	str[30] = "testcase #%d: %#-20.15X\n";
+	str[31] = "testcase #%d: %#-020.15X\n";
+	str[32] = "testcase #%d: %5.10X\n";
+	str[33] = "testcase #%d: %.0X\n";
+	str[34] = "testcase #%d: %2.0X %10.5X %5.10X\n";
+	x[0] = 0;
+	x[1] = UINT_MAX;
 	rep2(i, 2, 16)
-		u[i] = rand() + rand();
+		x[i] = rand() + (i & 1 * 2);
 	if (argc == 2)
 	{
-		rep(i, 18)
+		rep(i, 34)
 		{
 			rep(j, 16)
 			{
-				res = printf(str[i], ++testcase, u[j]);
+				res = printf(str[i], ++testcase, x[j]);
 				print_res(res);
 			}
 		}
-		res = printf(str[18], ++testcase, u[0], u[1], u[2]);
+		res = printf(str[34], ++testcase, x[0], x[1], x[2]);
 		print_res(res);
 	}
 	else
 	{
-		rep(i, 18)
+		rep(i, 34)
 		{
 			rep(j, 16)
 			{
-				res = ft_printf(str[i], ++testcase, u[j]);
+				res = ft_printf(str[i], ++testcase, x[j]);
 				print_res(res);
 			}
 		}
-		res = ft_printf(str[18], ++testcase, u[0], u[1], u[2]);
+		res = ft_printf(str[34], ++testcase, x[0], x[1], x[2]);
 		print_res(res);
+	}
+}
+
+void	test_typex(int argc)
+{
+	char			*str[256];
+	unsigned int	x[16];
+	int				res;
+
+	str[0] = "testcase #%d: %x\n";
+	str[1] = "testcase #%d: %0x\n";
+	str[2] = "testcase #%d: %-x\n";
+	str[3] = "testcase #%d: %-0x\n";
+	str[4] = "testcase #%d: %20x\n";
+	str[5] = "testcase #%d: %020x\n";
+	str[6] = "testcase #%d: %-20x\n";
+	str[7] = "testcase #%d: %-020x\n";
+	str[8] = "testcase #%d: %.15x\n";
+	str[9] = "testcase #%d: %0.15x\n";
+	str[10] = "testcase #%d: %-.15x\n";
+	str[11] = "testcase #%d: %-0.15x\n";
+	str[12] = "testcase #%d: %20.15x\n";
+	str[13] = "testcase #%d: %020.15x\n";
+	str[14] = "testcase #%d: %-20.15x\n";
+	str[15] = "testcase #%d: %-020.15x\n";
+	str[16] = "testcase #%d: %#x\n";
+	str[17] = "testcase #%d: %#0x\n";
+	str[18] = "testcase #%d: %#-x\n";
+	str[19] = "testcase #%d: %#-0x\n";
+	str[20] = "testcase #%d: %#20x\n";
+	str[21] = "testcase #%d: %#020x\n";
+	str[22] = "testcase #%d: %#-20x\n";
+	str[23] = "testcase #%d: %#-020x\n";
+	str[24] = "testcase #%d: %#.15x\n";
+	str[25] = "testcase #%d: %#0.15x\n";
+	str[26] = "testcase #%d: %#-.15x\n";
+	str[27] = "testcase #%d: %#-0.15x\n";
+	str[28] = "testcase #%d: %#20.15x\n";
+	str[29] = "testcase #%d: %#020.15x\n";
+	str[30] = "testcase #%d: %#-20.15x\n";
+	str[31] = "testcase #%d: %#-020.15x\n";
+	str[32] = "testcase #%d: %5.10x\n";
+	str[33] = "testcase #%d: %.0x\n";
+	str[34] = "testcase #%d: %2.0x %10.5x %5.10x\n";
+	x[0] = 0;
+	x[1] = UINT_MAX;
+	rep2(i, 2, 16)
+		x[i] = rand() + (i & 1 * 2);
+	if (argc == 2)
+	{
+		rep(i, 34)
+		{
+			rep(j, 16)
+			{
+				res = printf(str[i], ++testcase, x[j]);
+				print_res(res);
+			}
+		}
+		res = printf(str[34], ++testcase, x[0], x[1], x[2]);
+		print_res(res);
+	}
+	else
+	{
+		rep(i, 34)
+		{
+			rep(j, 16)
+			{
+				res = ft_printf(str[i], ++testcase, x[j]);
+				print_res(res);
+			}
+		}
+		res = ft_printf(str[34], ++testcase, x[0], x[1], x[2]);
+		print_res(res);
+	}
+}
+
+void	test_typeper(int argc)
+{
+	char			*str[256];
+	int				res;
+
+	str[0] = "testcase #%d: %%\n";
+	str[1] = "testcase #%d: %#%\n";
+	str[2] = "testcase #%d: %0%\n";
+	str[3] = "testcase #%d: %0#%\n";
+	str[4] = "testcase #%d: %-%\n";
+	str[5] = "testcase #%d: %-#%\n";
+	str[6] = "testcase #%d: %-0%\n";
+	str[7] = "testcase #%d: %-0#%\n";
+	str[8] = "testcase #%d: % %\n";
+	str[9] = "testcase #%d: % #%\n";
+	str[10] = "testcase #%d: % 0%\n";
+	str[11] = "testcase #%d: % 0#%\n";
+	str[12] = "testcase #%d: % -%\n";
+	str[13] = "testcase #%d: % -#%\n";
+	str[14] = "testcase #%d: % -0%\n";
+	str[15] = "testcase #%d: % -0#%\n";
+	str[16] = "testcase #%d: %+%\n";
+	str[17] = "testcase #%d: %+#%\n";
+	str[18] = "testcase #%d: %+0%\n";
+	str[19] = "testcase #%d: %+0#%\n";
+	str[20] = "testcase #%d: %+-%\n";
+	str[21] = "testcase #%d: %+-#%\n";
+	str[22] = "testcase #%d: %+-0%\n";
+	str[23] = "testcase #%d: %+-0#%\n";
+	str[24] = "testcase #%d: %+ %\n";
+	str[25] = "testcase #%d: %+ #%\n";
+	str[26] = "testcase #%d: %+ 0%\n";
+	str[27] = "testcase #%d: %+ 0#%\n";
+	str[28] = "testcase #%d: %+ -%\n";
+	str[29] = "testcase #%d: %+ -#%\n";
+	str[30] = "testcase #%d: %+ -0%\n";
+	str[31] = "testcase #%d: %+ -0#%\n";
+	str[32] = "testcase #%d: %10%\n";
+	str[33] = "testcase #%d: %#10%\n";
+	str[34] = "testcase #%d: %010%\n";
+	str[35] = "testcase #%d: %0#10%\n";
+	str[36] = "testcase #%d: %-10%\n";
+	str[37] = "testcase #%d: %-#10%\n";
+	str[38] = "testcase #%d: %-010%\n";
+	str[39] = "testcase #%d: %-0#10%\n";
+	str[40] = "testcase #%d: % 10%\n";
+	str[41] = "testcase #%d: % #10%\n";
+	str[42] = "testcase #%d: % 010%\n";
+	str[43] = "testcase #%d: % 0#10%\n";
+	str[44] = "testcase #%d: % -10%\n";
+	str[45] = "testcase #%d: % -#10%\n";
+	str[46] = "testcase #%d: % -010%\n";
+	str[47] = "testcase #%d: % -0#10%\n";
+	str[48] = "testcase #%d: %+10%\n";
+	str[49] = "testcase #%d: %+#10%\n";
+	str[50] = "testcase #%d: %+010%\n";
+	str[51] = "testcase #%d: %+0#10%\n";
+	str[52] = "testcase #%d: %+-10%\n";
+	str[53] = "testcase #%d: %+-#10%\n";
+	str[54] = "testcase #%d: %+-010%\n";
+	str[55] = "testcase #%d: %+-0#10%\n";
+	str[56] = "testcase #%d: %+ 10%\n";
+	str[57] = "testcase #%d: %+ #10%\n";
+	str[58] = "testcase #%d: %+ 010%\n";
+	str[59] = "testcase #%d: %+ 0#10%\n";
+	str[60] = "testcase #%d: %+ -10%\n";
+	str[61] = "testcase #%d: %+ -#10%\n";
+	str[62] = "testcase #%d: %+ -010%\n";
+	str[63] = "testcase #%d: %+ -0#10%\n";
+	str[64] = "testcase #%d: %+ -0#10.5%\n";
+	str[65] = "testcase #%d: %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
+	if (argc == 2)
+	{
+		rep(i, 66)
+		{
+			res = printf(str[i], ++testcase);
+			print_res(res);
+		}
+	}
+	else
+	{
+		rep(i, 66)
+		{
+			res = ft_printf(str[i], ++testcase);
+			print_res(res);
+		}
 	}
 }
 
@@ -860,10 +1038,13 @@ int	main(int argc, char **argv)
 	//check_typex();
 	//check_typeper();
 	srand(time(NULL));
-	//test_typec(argc);
-	//test_types(argc);
-	//test_typep(argc);
-	//test_typed(argc);
+	test_typec(argc);
+	test_types(argc);
+	test_typep(argc);
+	test_typed(argc);
 	test_typeu(argc);
+	test_typex(argc);
+	test_typeupperx(argc);
+	test_typeper(argc);
 	return (0);
 }
