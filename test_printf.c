@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "./includes/ft_printf.h"
+#include "test_printf.h"
 
 void	check_fmt_content(t_fmt fmt)
 {
@@ -463,6 +463,49 @@ void	check_typeper(void)
 	check_output(str, res);
 }
 
+int testcase = 0;
+
+void	print_res(int res)
+{
+	fflush(stdout);
+	ft_putstr_fd("res:", 1);
+	ft_putnbr_fd(res, 1);
+	ft_putstr_fd("\n", 1);
+}
+
+void	test_typec(int argc)
+{
+	char	*str[16];
+	char	c[16];
+	int		res;
+
+	str[0] = "testcase #%d: %c\n";
+	str[1] = "testcase #%d: %c %c %c %c %c %c %c %c %c %c\n";
+	str[2] = "testcase #%10d: %c\n";
+	str[3] = "testcase #%-10d: %c\n";
+	rep(i, 16)
+		c[i] = '0' + i;
+	if (argc == 2)
+	{
+		rep2(i, 32, 127)
+		{
+			res = printf(str[0], ++testcase, i);
+			print_res(res);
+		}
+		res = printf(str[0], ++testcase, 200);
+		print_res(res);
+		res = printf(str[1], ++testcase, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
+		print_res(res);
+		res = printf(str[2], ++testcase, c[0]);
+		print_res(res);
+		res = printf(str[3], ++testcase, c[0]);
+		print_res(res);
+	}
+	else
+	{
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -484,9 +527,6 @@ int	main(int argc, char **argv)
 	//check_typeu();
 	//check_typex();
 	//check_typeper();
-	if (argc)
-		argv[1] = "a";
-	printf("%05.10%\n");
-	printf("%05.10%\n");
+	test_typec(argc);
 	return (0);
 }
