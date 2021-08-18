@@ -1,6 +1,7 @@
 #include "./includes/ft_printf.h"
 #include "test_printf.h"
 
+/*
 void	check_fmt_content(t_fmt fmt)
 {
 	printf("<fmt>\n");
@@ -22,7 +23,6 @@ void	check_fmt_content(t_fmt fmt)
 	printf("\n");
 }
 
-/*
 void	check_fmt_free(void)
 {
 	t_fmt	fmt;
@@ -42,7 +42,6 @@ void	check_fmt_free(void)
 	ft_fmtfree(&fmt);
 	check_fmt_content(fmt);
 }
-*/
 
 void	check_fmt_buf1(const char *str, int res, t_fmt fmt)
 {
@@ -462,15 +461,15 @@ void	check_typeper(void)
 	res = ft_printf(str);
 	check_output(str, res);
 }
+*/
 
 int testcase = 0;
 
 void	print_res(int res)
 {
 	fflush(stdout);
-	ft_putstr_fd("res:", 1);
-	ft_putnbr_fd(res, 1);
-	ft_putstr_fd("\n", 1);
+	printf("res:%d\n", res);
+	fflush(stdout);
 }
 
 void	test_typec(int argc)
@@ -487,11 +486,12 @@ void	test_typec(int argc)
 		c[i] = '0' + i;
 	if (argc == 2)
 	{
-		rep2(i, 32, 127)
-		{
-			res = printf(str[0], ++testcase, i);
-			print_res(res);
-		}
+		res = printf(str[0], ++testcase, c[0]);
+		print_res(res);
+		res = printf(str[0], ++testcase, c[0] + 256);
+		print_res(res);
+		res = printf(str[0], ++testcase, c[0] - 256);
+		print_res(res);
 		res = printf(str[0], ++testcase, 200);
 		print_res(res);
 		res = printf(str[1], ++testcase, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
@@ -503,11 +503,12 @@ void	test_typec(int argc)
 	}
 	else
 	{
-		rep2(i, 32, 127)
-		{
-			res = ft_printf(str[0], ++testcase, i);
-			print_res(res);
-		}
+		res = ft_printf(str[0], ++testcase, c[0]);
+		print_res(res);
+		res = ft_printf(str[0], ++testcase, c[0] + 256);
+		print_res(res);
+		res = ft_printf(str[0], ++testcase, c[0] - 256);
+		print_res(res);
 		res = ft_printf(str[0], ++testcase, 200);
 		print_res(res);
 		res = ft_printf(str[1], ++testcase, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);
@@ -516,6 +517,53 @@ void	test_typec(int argc)
 		print_res(res);
 		res = ft_printf(str[3], ++testcase, c[0]);
 		print_res(res);
+	}
+}
+
+void	test_types(int argc)
+{
+	char	*str[16];
+	char	*s[16];
+	int		res;
+
+	str[0] = "testcase #%d: %s\n";
+	str[1] = "testcase #%d: %-10s\n";
+	str[2] = "testcase #%d: %-5s\n";
+	str[3] = "testcase #%d: %10s\n";
+	str[4] = "testcase #%d: %5s\n";
+	str[5] = "testcase #%d: %.10s\n";
+	str[6] = "testcase #%d: %.5s\n";
+	str[7] = "testcase #%d: %.0s\n";
+	str[8] = "testcase #%d: %-10.5s\n";
+	str[9] = "testcase #%d: %10.5s\n";
+	str[10] = "testcase #%d: %-5.10s\n";
+	str[11] = "testcase #%d: %5.10s\n";
+	str[12] = "testcase #%d: %-10.0s\n";
+	str[13] = "testcase #%d: %10.0s\n";
+	str[14] = "testcase #%d: %.-3s\n";
+	s[0] = "hogefuga";
+	s[1] = "";
+	if (argc == 2)
+	{
+		rep(i, 15)
+		{
+			rep(j, 2)
+			{
+				res = printf(str[i], ++testcase, s[j]);
+				print_res(res);
+			}
+		}
+	}
+	else
+	{
+		rep(i, 15)
+		{
+			rep(j, 2)
+			{
+				res = ft_printf(str[i], ++testcase, s[j]);
+				print_res(res);
+			}
+		}
 	}
 }
 
@@ -540,6 +588,7 @@ int	main(int argc, char **argv)
 	//check_typeu();
 	//check_typex();
 	//check_typeper();
-	test_typec(argc);
+	//test_typec(argc);
+	test_types(argc);
 	return (0);
 }
