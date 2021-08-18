@@ -727,12 +727,117 @@ void	test_typed(int argc)
 void	test_typeu(int argc)
 {
 	char			*str[256];
-	unsigned int	d[16];
+	unsigned int	u[16];
 	int				res;
 
 	str[0] = "testcase #%d: %u\n";
-	str[0] = "testcase #%d: %u\n";
+	str[1] = "testcase #%d: %0u\n";
+	str[2] = "testcase #%d: %-u\n";
+	str[3] = "testcase #%d: %-0u\n";
+	str[4] = "testcase #%d: %20u\n";
+	str[5] = "testcase #%d: %020u\n";
+	str[6] = "testcase #%d: %-20u\n";
+	str[7] = "testcase #%d: %-020u\n";
+	str[8] = "testcase #%d: %.15u\n";
+	str[9] = "testcase #%d: %0.15u\n";
+	str[10] = "testcase #%d: %-.15u\n";
+	str[11] = "testcase #%d: %-0.15u\n";
+	str[12] = "testcase #%d: %20.15u\n";
+	str[13] = "testcase #%d: %020.15u\n";
+	str[14] = "testcase #%d: %-20.15u\n";
+	str[15] = "testcase #%d: %-020.15u\n";
+	str[16] = "testcase #%d: %5.10u\n";
+	str[17] = "testcase #%d: %.0u\n";
+	str[18] = "testcase #%d: %2.0u %10.5u %5.10u\n";
+	u[0] = 0;
+	u[1] = UINT_MAX;
+	rep2(i, 2, 16)
+		u[i] = rand() + rand();
+	if (argc == 2)
+	{
+		rep(i, 18)
+		{
+			rep(j, 16)
+			{
+				res = printf(str[i], ++testcase, u[j]);
+				print_res(res);
+			}
+		}
+		res = printf(str[18], ++testcase, u[0], u[1], u[2]);
+		print_res(res);
+	}
+	else
+	{
+		rep(i, 18)
+		{
+			rep(j, 16)
+			{
+				res = ft_printf(str[i], ++testcase, u[j]);
+				print_res(res);
+			}
+		}
+		res = ft_printf(str[18], ++testcase, u[0], u[1], u[2]);
+		print_res(res);
+	}
 }
+
+void	test_typeu(int argc)
+{
+	char			*str[256];
+	unsigned int	u[16];
+	int				res;
+
+	str[0] = "testcase #%d: %u\n";
+	str[1] = "testcase #%d: %0u\n";
+	str[2] = "testcase #%d: %-u\n";
+	str[3] = "testcase #%d: %-0u\n";
+	str[4] = "testcase #%d: %20u\n";
+	str[5] = "testcase #%d: %020u\n";
+	str[6] = "testcase #%d: %-20u\n";
+	str[7] = "testcase #%d: %-020u\n";
+	str[8] = "testcase #%d: %.15u\n";
+	str[9] = "testcase #%d: %0.15u\n";
+	str[10] = "testcase #%d: %-.15u\n";
+	str[11] = "testcase #%d: %-0.15u\n";
+	str[12] = "testcase #%d: %20.15u\n";
+	str[13] = "testcase #%d: %020.15u\n";
+	str[14] = "testcase #%d: %-20.15u\n";
+	str[15] = "testcase #%d: %-020.15u\n";
+	str[16] = "testcase #%d: %5.10u\n";
+	str[17] = "testcase #%d: %.0u\n";
+	str[18] = "testcase #%d: %2.0u %10.5u %5.10u\n";
+	u[0] = 0;
+	u[1] = UINT_MAX;
+	rep2(i, 2, 16)
+		u[i] = rand() + rand();
+	if (argc == 2)
+	{
+		rep(i, 18)
+		{
+			rep(j, 16)
+			{
+				res = printf(str[i], ++testcase, u[j]);
+				print_res(res);
+			}
+		}
+		res = printf(str[18], ++testcase, u[0], u[1], u[2]);
+		print_res(res);
+	}
+	else
+	{
+		rep(i, 18)
+		{
+			rep(j, 16)
+			{
+				res = ft_printf(str[i], ++testcase, u[j]);
+				print_res(res);
+			}
+		}
+		res = ft_printf(str[18], ++testcase, u[0], u[1], u[2]);
+		print_res(res);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -759,5 +864,6 @@ int	main(int argc, char **argv)
 	//test_types(argc);
 	//test_typep(argc);
 	//test_typed(argc);
+	test_typeu(argc);
 	return (0);
 }
