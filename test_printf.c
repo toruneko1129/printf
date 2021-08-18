@@ -540,12 +540,11 @@ void	test_types(int argc)
 	str[11] = "testcase #%d: %5.10s\n";
 	str[12] = "testcase #%d: %-10.0s\n";
 	str[13] = "testcase #%d: %10.0s\n";
-	str[14] = "testcase #%d: %.-3s\n";
 	s[0] = "hogefuga";
 	s[1] = "";
 	if (argc == 2)
 	{
-		rep(i, 15)
+		rep(i, 14)
 		{
 			rep(j, 2)
 			{
@@ -556,7 +555,7 @@ void	test_types(int argc)
 	}
 	else
 	{
-		rep(i, 15)
+		rep(i, 14)
 		{
 			rep(j, 2)
 			{
@@ -588,7 +587,7 @@ int	main(int argc, char **argv)
 	//check_typeu();
 	//check_typex();
 	//check_typeper();
-	//test_typec(argc);
+	test_typec(argc);
 	test_types(argc);
 	return (0);
 }
