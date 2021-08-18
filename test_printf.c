@@ -540,6 +540,7 @@ void	test_types(int argc)
 	str[11] = "testcase #%d: %5.10s\n";
 	str[12] = "testcase #%d: %-10.0s\n";
 	str[13] = "testcase #%d: %10.0s\n";
+	str[14] = "testcase #%d: %s %10s %-10s\n";
 	s[0] = "hogefuga";
 	s[1] = "";
 	s[2] = NULL;
@@ -553,6 +554,8 @@ void	test_types(int argc)
 				print_res(res);
 			}
 		}
+		res = printf(str[14], ++testcase, s[0], s[1], s[2]);
+		print_res(res);
 	}
 	else
 	{
@@ -564,9 +567,172 @@ void	test_types(int argc)
 				print_res(res);
 			}
 		}
+		res = ft_printf(str[14], ++testcase, s[0], s[1], s[2]);
+		print_res(res);
 	}
 }
 
+void	test_typep(int argc)
+{
+	char	*str[16];
+	void	*p[16];
+	int		res;
+
+	str[0] = "testcase #%d: %p\n";
+	str[1] = "testcase #%d: %-20p\n";
+	str[2] = "testcase #%d: %-1p\n";
+	str[3] = "testcase #%d: %20p\n";
+	str[4] = "testcase #%d: %1p\n";
+	str[5] = "testcase #%d: %p %20p %-20p\n";
+	p[0] = (void *)0;
+	rep2(i, 1, 16)
+		p[i] = (void *)rand();
+	if (argc == 2)
+	{
+		rep(i, 5)
+		{
+			rep(j, 16)
+			{
+				res = printf(str[i], ++testcase, p[j]);
+				print_res(res);
+			}
+		}
+		res = printf(str[5], ++testcase, p[0], p[1], p[2]);
+		print_res(res);
+	}
+	else
+	{
+		rep(i, 5)
+		{
+			rep(j, 16)
+			{
+				res = ft_printf(str[i], ++testcase, p[j]);
+				print_res(res);
+			}
+		}
+		res = ft_printf(str[5], ++testcase, p[0], p[1], p[2]);
+		print_res(res);
+	}
+}
+
+void	test_typed(int argc)
+{
+	char	*str[256];
+	int		d[16];
+	int		res;
+
+	str[0] = "testcase #%d: %20d\n";
+	str[1] = "testcase #%d: %020d\n";
+	str[2] = "testcase #%d: %-20d\n";
+	str[3] = "testcase #%d: %-020d\n";
+	str[4] = "testcase #%d: % 20d\n";
+	str[5] = "testcase #%d: % 020d\n";
+	str[6] = "testcase #%d: % -20d\n";
+	str[7] = "testcase #%d: % -020d\n";
+	str[8] = "testcase #%d: %+20d\n";
+	str[9] = "testcase #%d: %+020d\n";
+	str[10] = "testcase #%d: %+-20d\n";
+	str[11] = "testcase #%d: %+-020d\n";
+	str[12] = "testcase #%d: %+ 20d\n";
+	str[13] = "testcase #%d: %+ 020d\n";
+	str[14] = "testcase #%d: %+ -20d\n";
+	str[15] = "testcase #%d: %+ -020d\n";
+	str[16] = "testcase #%d: %d\n";
+	str[17] = "testcase #%d: %0d\n";
+	str[18] = "testcase #%d: %-d\n";
+	str[19] = "testcase #%d: %-0d\n";
+	str[20] = "testcase #%d: % d\n";
+	str[21] = "testcase #%d: % 0d\n";
+	str[22] = "testcase #%d: % -d\n";
+	str[23] = "testcase #%d: % -0d\n";
+	str[24] = "testcase #%d: %+d\n";
+	str[25] = "testcase #%d: %+0d\n";
+	str[26] = "testcase #%d: %+-d\n";
+	str[27] = "testcase #%d: %+-0d\n";
+	str[28] = "testcase #%d: %+ d\n";
+	str[29] = "testcase #%d: %+ 0d\n";
+	str[30] = "testcase #%d: %+ -d\n";
+	str[31] = "testcase #%d: %+ -0d\n";
+	str[32] = "testcase #%d: %20.15d\n";
+	str[33] = "testcase #%d: %020.15d\n";
+	str[34] = "testcase #%d: %-20.15d\n";
+	str[35] = "testcase #%d: %-020.15d\n";
+	str[36] = "testcase #%d: % 20.15d\n";
+	str[37] = "testcase #%d: % 020.15d\n";
+	str[38] = "testcase #%d: % -20.15d\n";
+	str[39] = "testcase #%d: % -020.15d\n";
+	str[40] = "testcase #%d: %+20.15d\n";
+	str[41] = "testcase #%d: %+020.15d\n";
+	str[42] = "testcase #%d: %+-20.15d\n";
+	str[43] = "testcase #%d: %+-020.15d\n";
+	str[44] = "testcase #%d: %+ 20.15d\n";
+	str[45] = "testcase #%d: %+ 020.15d\n";
+	str[46] = "testcase #%d: %+ -20.15d\n";
+	str[47] = "testcase #%d: %+ -020.15d\n";
+	str[48] = "testcase #%d: %.15d\n";
+	str[49] = "testcase #%d: %0.15d\n";
+	str[50] = "testcase #%d: %-.15d\n";
+	str[51] = "testcase #%d: %-0.15d\n";
+	str[52] = "testcase #%d: % .15d\n";
+	str[53] = "testcase #%d: % 0.15d\n";
+	str[54] = "testcase #%d: % -.15d\n";
+	str[55] = "testcase #%d: % -0.15d\n";
+	str[56] = "testcase #%d: %+.15d\n";
+	str[57] = "testcase #%d: %+0.15d\n";
+	str[58] = "testcase #%d: %+-.15d\n";
+	str[59] = "testcase #%d: %+-0.15d\n";
+	str[60] = "testcase #%d: %+ .15d\n";
+	str[61] = "testcase #%d: %+ 0.15d\n";
+	str[62] = "testcase #%d: %+ -.15d\n";
+	str[63] = "testcase #%d: %+ -0.15d\n";
+	str[64] = "testcase #%d: %15.20d\n";
+	str[64] = "testcase #%d: %.0d\n";
+	str[65] = "testcase #%d: %20d %10d %.20d\n";
+	d[0] = 0;
+	d[1] = INT_MAX;
+	d[2] = INT_MIN;
+	d[3] = -1;
+	rep2(i, 4, 10)
+		d[i] = rand();
+	rep2(i, 10, 16)
+		d[i] = -rand();
+	if (argc == 2)
+	{
+		rep(i, 65)
+		{
+			rep(j, 16)
+			{
+				res = printf(str[i], ++testcase, d[j]);
+				print_res(res);
+			}
+		}
+		res = printf(str[65], ++testcase, d[0], d[1], d[2]);
+		print_res(res);
+	}
+	else
+	{
+		rep(i, 65)
+		{
+			rep(j, 16)
+			{
+				res = ft_printf(str[i], ++testcase, d[j]);
+				print_res(res);
+			}
+		}
+		res = ft_printf(str[65], ++testcase, d[0], d[1], d[2]);
+		print_res(res);
+	}
+}
+
+void	test_typeu(int argc)
+{
+	char			*str[256];
+	unsigned int	d[16];
+	int				res;
+
+	str[0] = "testcase #%d: %u\n";
+	str[0] = "testcase #%d: %u\n";
+}
 int	main(int argc, char **argv)
 {
 	//int res = printf("%d%2147483647s", 1, "hoge");
@@ -588,7 +754,10 @@ int	main(int argc, char **argv)
 	//check_typeu();
 	//check_typex();
 	//check_typeper();
-	test_typec(argc);
-	test_types(argc);
+	srand(time(NULL));
+	//test_typec(argc);
+	//test_types(argc);
+	//test_typep(argc);
+	//test_typed(argc);
 	return (0);
 }
